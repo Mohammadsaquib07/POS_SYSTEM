@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+/* Global scrollbar for entire app */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #77b5e0 #f0f0f0;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
