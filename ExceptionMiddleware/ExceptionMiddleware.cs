@@ -7,7 +7,6 @@ namespace Products_Crud.ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ExceptionMiddleware> _logger;
-
         public ExceptionMiddleware(RequestDelegate RequestDelegateobj,ILogger<ExceptionMiddleware> loggerObj)
         {
             _next = RequestDelegateobj;
@@ -18,7 +17,6 @@ namespace Products_Crud.ExceptionMiddleware
         {
             try
             {
-                // try executing next middleware / controller
                 await _next(httpContextObj);
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Products_Crud.BL;
 using Products_Crud.DTOs;
@@ -15,6 +16,8 @@ namespace Products_Crud.Controllers
         {
             _invoiceService = iinvoiceService;
         }
+
+        [Authorize]
         [HttpPost("CreateInvoice")]
         public IActionResult CreateInvoice([FromBody] FullInvoiceRequest FullInvoiceRequestObj)
         {

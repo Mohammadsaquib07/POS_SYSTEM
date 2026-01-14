@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\dell\\source\\repos\\Products_Crud\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B95A8B9F-9FC9-4AE4-9FEC-1F6A03DA7BE8}|Products_Crud.csproj|c:\\users\\dell\\source\\repos\\products_crud\\client\\src\\app\\login\\login\\login.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{B95A8B9F-9FC9-4AE4-9FEC-1F6A03DA7BE8}|Products_Crud.csproj|solutionrelative:client\\src\\app\\login\\login\\login.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{B95A8B9F-9FC9-4AE4-9FEC-1F6A03DA7BE8}|Products_Crud.csproj|c:\\users\\dell\\source\\repos\\products_crud\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B95A8B9F-9FC9-4AE4-9FEC-1F6A03DA7BE8}|Products_Crud.csproj|solutionrelative:controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B95A8B9F-9FC9-4AE4-9FEC-1F6A03DA7BE8}|Products_Crud.csproj|c:\\users\\dell\\source\\repos\\products_crud\\client\\src\\app\\dashboard\\dashboard.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{B95A8B9F-9FC9-4AE4-9FEC-1F6A03DA7BE8}|Products_Crud.csproj|solutionrelative:client\\src\\app\\dashboard\\dashboard.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,15 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "login.component.ts",
-              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\Products_Crud\\client\\src\\app\\Login\\login\\login.component.ts",
-              "RelativeDocumentMoniker": "client\\src\\app\\Login\\login\\login.component.ts",
-              "ToolTip": "C:\\Users\\dell\\source\\repos\\Products_Crud\\client\\src\\app\\Login\\login\\login.component.ts",
-              "RelativeToolTip": "client\\src\\app\\Login\\login\\login.component.ts",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-10-02T13:22:00.747Z",
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\Products_Crud\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\Products_Crud\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T21:15:40.529Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "dashboard.component.ts",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\Products_Crud\\client\\src\\app\\dashboard\\dashboard.component.ts",
+              "RelativeDocumentMoniker": "client\\src\\app\\dashboard\\dashboard.component.ts",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\Products_Crud\\client\\src\\app\\dashboard\\dashboard.component.ts",
+              "RelativeToolTip": "client\\src\\app\\dashboard\\dashboard.component.ts",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACUAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-12-11T16:48:33.494Z"
             }
           ]
         }
