@@ -9,6 +9,7 @@ namespace Products_Crud.DAL
         public DbSet<Items> Items{get;set;}
         public DbSet<Order> Orders {get;set;}
         public DbSet<OrderItem> OrderItems {get;set;}
+        public DbSet<Grahaq> Grahaqs {get;set;}
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {
         }

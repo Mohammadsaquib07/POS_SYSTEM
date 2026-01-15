@@ -8,12 +8,11 @@ namespace Products_Crud.Model
   public class Order
   {
     public int Id { get; set; }
-    public string OrderNumber { get; set; }
-    public string CustomerName { get; set; }
     public DateTime OrderDate { get; set; }
     public decimal TotalAmount { get; set; }
-    public string Status { get; set; } = null!;
-
-    public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
+    public string? Status { get; set; }
+    public int CustomerId { get; set; }
+    public Grahaq? Grahaqs { get; set; }
+    public ICollection<OrderItem>? Items { get; set; }
   }
 }

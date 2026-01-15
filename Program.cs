@@ -70,12 +70,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 var app = builder.Build();
 app.UseCors("AllowAllOrigins");
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseDeveloperExceptionPage();
+//     app.UseSwagger();
+//     app.UseSwaggerUI();
+// }
+app.UseDeveloperExceptionPage();
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseRouting();
 app.UseHttpsRedirection();

@@ -7,10 +7,10 @@ namespace Products_Crud.DTOs
 {
     public class RecentOrderDto
     {
-        public string OrderId { get; set; } = null!;
-        public string Customer { get; set; } = null!;
+        public int OrderId { get; set; }
+        public string? CustomerName { get; set; }
         public int Items { get; set; }
         public decimal Amount { get; set; }
-        public string Status { get; set; } = null!;
+        public string? Status { get; set; }
     }
 }
