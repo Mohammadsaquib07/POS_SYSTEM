@@ -1,6 +1,6 @@
-﻿using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Products_Crud.ExceptionMiddleware;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using Products_Crud.Interfaces;
@@ -10,6 +10,7 @@ using Products_Crud.Model;
 using Products_Crud.BAL;
 using Products_Crud.DAL;
 using Products_Crud.BL;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment.EnvironmentName;
@@ -17,11 +18,12 @@ Console.WriteLine($"Environment: {env}");
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<UserDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Sql_Connection_String")));
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-  options.UseSqlServer(builder.Configuration.GetConnectionString("Sql_Connection_String")));
+builder.Services.AddDbContext<UserDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("Sql_Connection_String")
+    )
+);
 
 builder.Services.AddScoped<IEmployeeRepository, AddEmployeeRepository>();
 builder.Services.AddScoped<IEmployeeUpdateRepository, UpdateEmployeeRepository>();
@@ -33,8 +35,6 @@ builder.Services.AddScoped<IInvoiceCreate, SqlInvoiceRepository>();
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 builder.Services.AddScoped<IInvoiceRead, SqlInvoiceRepository>();
 builder.Services.AddScoped<ApiKeyAuthorizationFilter>();
-builder.Services.AddScoped<IStudentRepository, StudentRepository>();
-builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<DashboardService>();
@@ -70,12 +70,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 var app = builder.Build();
 app.UseCors("AllowAllOrigins");
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseDeveloperExceptionPage();
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
 app.UseDeveloperExceptionPage();
 app.UseSwagger();
 app.UseSwaggerUI();

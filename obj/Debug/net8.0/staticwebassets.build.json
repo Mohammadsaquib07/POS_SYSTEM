@@ -1,1 +1,11 @@
-{"Version":1,"Hash":"hJBusw9QuwgGUS76+YO6nTlQ3P99onsL6z+G6D0hTUA=","Source":"Products_Crud","BasePath":"_content/Products_Crud","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
+{
+  "Version": 1,
+  "Hash": "+tYD0DZVaKYq4+cLpUDinUPpKteJ/chNbwmJjXSlFco=",
+  "Source": "Products_Crud",
+  "BasePath": "_content/Products_Crud",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
