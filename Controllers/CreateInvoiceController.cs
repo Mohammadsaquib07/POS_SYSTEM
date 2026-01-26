@@ -17,32 +17,111 @@ namespace Products_Crud.Controllers
             _invoiceService = iinvoiceService;
         }
 
-        [Authorize]
+        // --------- 1️⃣ Create Invoice with New Customer ----------
         [HttpPost("CreateInvoice")]
-        public IActionResult CreateInvoice([FromBody] FullInvoiceRequest FullInvoiceRequestObj)
+        public IActionResult CreateInvoice([FromBody] CreateInvoiceRequest request)
         {
             try
             {
-                if (FullInvoiceRequestObj == null)
+                // Validate request object
+                if (request == null)
                 {
-                    return BadRequest("Invoice must have at least one item.");
+                    return BadRequest(new { Message = "Validation Error", Details = "Request body is required." });
                 }
-                if (FullInvoiceRequestObj.IsNewCustomer == true)
+
+                // Validate items exist and are not empty
+                if (request.Items == null || request.Items.Count == 0)
                 {
-                    int invoiceId= _invoiceService.CreateCustomerAndInvoice(FullInvoiceRequestObj);
-                    return Ok(new { InvoiceId = invoiceId, Message = "Invoice created successfully!" });
+                    return BadRequest(new { Message = "Validation Error", Details = "Please select at least one product to create an invoice." });
                 }
-                else
+
+                // Validate customer information
+                if (request.Customer == null)
                 {
-                    int newInvoiceId = _invoiceService.CreateInvoice(FullInvoiceRequestObj.Invoice);
-                    return Ok(new { InvoiceId = newInvoiceId, Message = "Invoice created successfully!" });
+                    return BadRequest(new { Message = "Validation Error", Details = "Customer information is required." });
                 }
+
+                int invoiceId = _invoiceService.CreateCustomerAndInvoice(request);
+                return Ok(new { InvoiceId = invoiceId, Message = "Invoice created successfully with new customer!" });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { Message = "Validation Error", Details = ex.Message });
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new { Message = "An error occurred", Details = ex.Message });
             }
+        }
 
+        // --------- 2️⃣ Create Invoice with Existing Customer ----------
+        [HttpPost("CreateInvoiceWithExistingCustomer")]
+        public IActionResult CreateInvoiceWithExistingCustomer([FromBody] CreateInvoiceRequest request)
+        {
+            try
+            {
+                // Validate request object
+                if (request == null)
+                {
+                    return BadRequest(new { Message = "Validation Error", Details = "Request body is required." });
+                }
+
+                // Validate items exist and are not empty
+                if (request.Items == null || request.Items.Count == 0)
+                {
+                    return BadRequest(new { Message = "Validation Error", Details = "Please select at least one product to create an invoice." });
+                }
+
+                // Validate CustomerId
+                if (request.CustomerId == null || request.CustomerId <= 0)
+                {
+                    return BadRequest(new { Message = "Validation Error", Details = "Valid CustomerId is required for existing customer." });
+                }
+
+                int invoiceId = _invoiceService.CreateInvoice(request);
+                return Ok(new { InvoiceId = invoiceId, Message = "Invoice created successfully with existing customer!" });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { Message = "Validation Error", Details = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred", Details = ex.Message });
+            }
+        }
+
+        // --------- 3️⃣ Get Invoice by ID ----------
+        [HttpGet("GetInvoice/{id}")]
+        public IActionResult GetInvoiceById(int id)
+        {
+            try
+            {
+                var invoice = _invoiceService.GetInvoiceById(id);
+                if (invoice == null)
+                    return NotFound(new { Message = "Invoice not found" });
+
+                return Ok(invoice);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred", Details = ex.Message });
+            }
+        }
+
+        // --------- 4️⃣ Get All Invoices ----------
+        [HttpGet("GetAll")]
+        public IActionResult GetAllInvoices()
+        {
+            try
+            {
+                var invoices = _invoiceService.GetAllInvoices();
+                return Ok(invoices);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred", Details = ex.Message });
+            }
         }
     }
 }

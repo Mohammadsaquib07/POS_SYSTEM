@@ -15,7 +15,14 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment.EnvironmentName;
 Console.WriteLine($"Environment: {env}");
-builder.Services.AddControllers();
+
+// Configure JSON serialization to ignore circular references
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
+    
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -29,11 +36,11 @@ builder.Services.AddScoped<IEmployeeRepository, AddEmployeeRepository>();
 builder.Services.AddScoped<IEmployeeUpdateRepository, UpdateEmployeeRepository>();
 builder.Services.AddScoped<IEmployeeUpdateService, UpdatEmployeeServices>();
 builder.Services.AddScoped<IEmployeeDeleteRepository, EmployeeDelete>();
-builder.Services.AddScoped<ICustomerCreate, SqlInvoiceRepository>();
-builder.Services.AddScoped<ICustomerRead, SqlInvoiceRepository>();
-builder.Services.AddScoped<IInvoiceCreate, SqlInvoiceRepository>();
+builder.Services.AddScoped<ICustomerCreate, CustomerRepository>();
+builder.Services.AddScoped<ICustomerRead, CustomerRepository>();
+builder.Services.AddScoped<IInvoiceCreate, InvoiceRepository>();
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
-builder.Services.AddScoped<IInvoiceRead, SqlInvoiceRepository>();
+builder.Services.AddScoped<IInvoiceRead, InvoiceRepository>();
 builder.Services.AddScoped<ApiKeyAuthorizationFilter>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<UserService>();

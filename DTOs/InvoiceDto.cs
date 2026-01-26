@@ -2,34 +2,33 @@
 
 namespace Products_Crud.DTOs
 {
-    public class InvoiceDto
+    public class CreateCustomerDto
     {
-        public int CustomerId { get; set; }
-        public bool IsnewCustomer { get; set; }
-        public DateTime InvoiceDate { get; set; } = DateTime.Now;
-        public string? Notes { get; set; }
-        public string? CreatedBy { get; set; }
-        public List<InvoiceItemDto> Items { get; set; } = new();
+        public string Name { get; set; } = null!;
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+        public string? BillingAddress { get; set; }
     }
-
-    public class InvoiceItemDto
+    public class InvoiceItemRequestDto
     {
-        public string ProductName { get; set; } = string.Empty;
-        public decimal Price { get; set; }
+        public int ProductId { get; set; }
         public int Quantity { get; set; }
     }
 
-    public class CustomerDto
+    public class CreateInvoiceRequest
     {
-        public int CustomerId { get; set; }   // PK
-        public string Name { get; set; }      // NOT NULL
-        public string? Email { get; set; }    // Nullable
-        public string? Phone { get; set; }
-        public string? BillingAddress { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public bool IsNewCustomer { get; set; }
 
-        // 🔗 Navigation Property (1 Customer -> Many Invoices)
-        public ICollection<Invoices>? Invoices { get; set; }
+        public int? CustomerId { get; set; } // REQUIRED if IsNewCustomer = false
+
+        public CreateCustomerDto? Customer { get; set; } // REQUIRED if IsNewCustomer = true
+
+        public DateTime InvoiceDate { get; set; }
+
+        public string? Notes { get; set; }
+
+        public List<InvoiceItemRequestDto> Items { get; set; } = new();
     }
+
 
 }

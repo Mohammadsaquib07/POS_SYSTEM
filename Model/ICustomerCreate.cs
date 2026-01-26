@@ -15,10 +15,13 @@
     {
         int AddInvoice(Invoices invoices);
         void AddInvoiceItem(InvoiceItem invoiceItem);
+        Invoices GetInvoiceById(int invoiceId);
+        List<Invoices> GetAllInvoices();
     }
     public interface IInvoiceRead
     {
         Invoices GetInvoice(int Id);
         IEnumerable<Invoices> GetInvoicesByCustomer(int customerId);
+        List<Invoices> GetAllInvoices();
     }
 }

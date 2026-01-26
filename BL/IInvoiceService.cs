@@ -5,8 +5,9 @@ namespace Products_Crud.BL
 {
     public interface IInvoiceService
     {
-        int CreateInvoice(InvoiceDto dto);
-        //int CreateCustomerAndInvoice(CustomerDto custDto, InvoiceDto invoiceDto);
-        int CreateCustomerAndInvoice(FullInvoiceRequest FullInvoiceRequestObj);
+        int CreateInvoice(CreateInvoiceRequest request);
+        int CreateCustomerAndInvoice(CreateInvoiceRequest FullInvoiceRequestObj);
+        Invoices GetInvoiceById(int invoiceId);
+        List<Invoices> GetAllInvoices();
     }
 }

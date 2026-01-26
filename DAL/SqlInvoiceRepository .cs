@@ -95,7 +95,7 @@ namespace Products_Crud.DAL
         {
             using var con = new SqlConnection(_connectionString);
             using var cmd = new SqlCommand(@"
-                INSERT INTO Invoice_Items
+                INSERT INTO InvoiceItems
                 (InvoiceId,ProductName,Quantity,Price,Total)
                 VALUES (@InvId,@Name,@Qty,@Price,@Total)", con);
 
@@ -169,6 +169,44 @@ namespace Products_Crud.DAL
             cmd.Parameters.AddWithValue("@Email", Email);
             con.Open();
             return (int)cmd.ExecuteScalar() > 0;
+        }
+
+        // --------- Get Invoice by ID ----------
+        public Invoices GetInvoiceById(int invoiceId)
+        {
+            var invoice = GetInvoice(invoiceId);
+            if (invoice == null)
+                throw new InvalidOperationException($"Invoice with ID {invoiceId} not found");
+            return invoice;
+        }
+
+        // --------- Get All Invoices ----------
+        public List<Invoices> GetAllInvoices()
+        {
+            var list = new List<Invoices>();
+            using var con = new SqlConnection(_connectionString);
+            using var cmd = new SqlCommand(
+                "SELECT InvoiceId,InvoiceNumber,CustomerId,InvoiceDate,Subtotal,TaxAmount,TotalAmount,Notes,CreatedBy,CreatedAt FROM Invoices ORDER BY InvoiceId DESC", con);
+
+            con.Open();
+            using var r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                list.Add(new Invoices
+                {
+                    InvoiceId = r.GetInt32(0),
+                    InvoiceNumber = r.GetString(1),
+                    CustomerId = r.GetInt32(2),
+                    InvoiceDate = r.GetDateTime(3),
+                    Subtotal = r.GetDecimal(4),
+                    TaxAmount = r.GetDecimal(5),
+                    TotalAmount = r.GetDecimal(6),
+                    Notes = r.IsDBNull(7) ? null : r.GetString(7),
+                    CreatedBy = r.IsDBNull(8) ? null : r.GetString(8),
+                    CreatedAt = r.GetDateTime(9)
+                });
+            }
+            return list;
         }
     }
 }
