@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/saquib/POS_SYSTEM/Products_Crud.csproj": {}
+    "/home/saquib/ERP-PROJECT/dotnetbackend/Products_Crud.csproj": {}
   },
   "projects": {
-    "/home/saquib/POS_SYSTEM/Products_Crud.csproj": {
+    "/home/saquib/ERP-PROJECT/dotnetbackend/Products_Crud.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/saquib/POS_SYSTEM/Products_Crud.csproj",
+        "projectUniqueName": "/home/saquib/ERP-PROJECT/dotnetbackend/Products_Crud.csproj",
         "projectName": "Products_Crud",
-        "projectPath": "/home/saquib/POS_SYSTEM/Products_Crud.csproj",
+        "projectPath": "/home/saquib/ERP-PROJECT/dotnetbackend/Products_Crud.csproj",
         "packagesPath": "/home/saquib/.nuget/packages/",
-        "outputPath": "/home/saquib/POS_SYSTEM/obj/",
+        "outputPath": "/home/saquib/ERP-PROJECT/dotnetbackend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/saquib/.nuget/NuGet/NuGet.Config"

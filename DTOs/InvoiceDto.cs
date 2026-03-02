@@ -29,6 +29,4 @@ namespace Products_Crud.DTOs
 
         public List<InvoiceItemRequestDto> Items { get; set; } = new();
     }
-
-
 }

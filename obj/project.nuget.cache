@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hmXE59qj2lY=",
+  "dgSpecHash": "2kTemcGi7PU=",
   "success": true,
-  "projectFilePath": "/home/saquib/POS_SYSTEM/Products_Crud.csproj",
+  "projectFilePath": "/home/saquib/ERP-PROJECT/dotnetbackend/Products_Crud.csproj",
   "expectedPackageFiles": [
     "/home/saquib/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/home/saquib/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",

@@ -41,8 +41,22 @@ namespace Products_Crud.Controllers
                     return BadRequest(new { Message = "Validation Error", Details = "Customer information is required." });
                 }
 
+                // if (request.IsNewCustomer)
+                // {
+                //     var CustomerResponseDto = new
+                //     {
+                //         Name = request.Customer!.Name,
+                //         Email = request.Customer.Email,
+                //         Phone = request.Customer.Phone,
+                //         BillingAddress = request.Customer.BillingAddress
+                //     };
+                // }
                 int invoiceId = _invoiceService.CreateCustomerAndInvoice(request);
-                return Ok(new { InvoiceId = invoiceId, Message = "Invoice created successfully with new customer!" });
+                return Ok(new
+                {
+                    InvoiceId = invoiceId,
+                    Message = "Invoice created successfully with new customer!"
+                });
             }
             catch (InvalidOperationException ex)
             {

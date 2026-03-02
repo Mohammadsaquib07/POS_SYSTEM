@@ -34,7 +34,7 @@ namespace Products_Crud.BL
             _customerRepository = customerRepository;
             _productRepository = productRepository;
         }
-        public int CreateInvoice(CreateInvoiceRequest request)
+        public  int CreateInvoice(CreateInvoiceRequest request)
         {
             if (request == null) 
                 throw new ArgumentNullException(nameof(request));
@@ -69,6 +69,7 @@ namespace Products_Crud.BL
 
             // Step 6️⃣ : Save invoice header
             int invoiceId = _invoiceCreate.AddInvoice(invoice);
+            // var invoiceDetailes = _invoiceCreate.AddInvoice(invoice);
 
             // Step 7️⃣ : Save all line items
             foreach (var item in invoiceItems)
