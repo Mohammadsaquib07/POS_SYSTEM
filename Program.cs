@@ -13,9 +13,8 @@ using Products_Crud.BL;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-var env = builder.Environment.EnvironmentName;
-Console.WriteLine($"Environment: {env}");
-
+// var env = builder.Environment.EnvironmentName;
+// Console.WriteLine($"Environment: {env}");
 // Configure JSON serialization to ignore circular references
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -25,12 +24,24 @@ builder.Services.AddControllers()
     
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.AddDbContext<UserDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("Sql_Connection_String")
     )
 );
+builder.Host.UseDefaultServiceProvider(option =>
+{
+    option.ValidateScopes = true; // catch scope mismatches
+    option.ValidateOnBuild = true; // catch missing registrations
+});
+/*
+the above three lines code explanation
+// If I forgot to register ISchemeService and a controller needs it:
+// App throws at startup:
+// "Unable to resolve service for type 'ISchemeService'
+//  while attempting to activate 'BillingController'"
+*/
+
 
 builder.Services.AddScoped<IEmployeeRepository, AddEmployeeRepository>();
 builder.Services.AddScoped<IEmployeeUpdateRepository, UpdateEmployeeRepository>();
@@ -87,5 +98,4 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-app.MapGet("/", () => $"Running in {env}");
 app.Run();

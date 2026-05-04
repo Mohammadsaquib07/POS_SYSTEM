@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Products_Crud")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2ed140cb84cb459abb9f86024c781ec45e88c12")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8e31a78bf0193624608ed0440c5c6a6eaba8942")]
 [assembly: System.Reflection.AssemblyProductAttribute("Products_Crud")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Products_Crud")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
