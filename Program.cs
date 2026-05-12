@@ -41,8 +41,6 @@ the above three lines code explanation
 // "Unable to resolve service for type 'ISchemeService'
 //  while attempting to activate 'BillingController'"
 */
-
-
 builder.Services.AddScoped<IEmployeeRepository, AddEmployeeRepository>();
 builder.Services.AddScoped<IEmployeeUpdateRepository, UpdateEmployeeRepository>();
 builder.Services.AddScoped<IEmployeeUpdateService, UpdatEmployeeServices>();
@@ -91,7 +89,6 @@ app.UseCors("AllowAllOrigins");
 app.UseDeveloperExceptionPage();
 app.UseSwagger();
 app.UseSwaggerUI();
-
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseRouting();
 app.UseHttpsRedirection();
