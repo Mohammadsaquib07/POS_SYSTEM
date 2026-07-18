@@ -33,7 +33,7 @@ namespace Products_Crud.DAL
                 .HasDefaultValueSql("GETUTCDATE()");
                 
                 modelBuilder.Entity<User>().HasIndex(u => u.Username).IsUnique();
-modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+                modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
         }
     }
 }
