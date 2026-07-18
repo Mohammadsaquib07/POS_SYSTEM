@@ -3,7 +3,7 @@ using Products_Crud.Model;
 
 namespace Products_Crud.DAL
 {
-    public class SqlInvoiceRepository : ICustomerCreate, ICustomerRead, IInvoiceCreate, IInvoiceRead
+    public class SqlInvoiceRepository
     {
         private readonly IConfiguration _conn;
         private readonly string _connectionString;

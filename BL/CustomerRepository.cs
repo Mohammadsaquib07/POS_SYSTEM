@@ -21,7 +21,7 @@ namespace Products_Crud.BL
         /// <summary>
         /// Add a new customer to the database
         /// </summary>
-        public int AddCustomer(Customers customer)
+        public async System.Threading.Tasks.Task<int> AddCustomerAsync(Customers customer)
         {
             if (customer == null)
                 throw new ArgumentNullException(nameof(customer));
@@ -30,8 +30,8 @@ namespace Products_Crud.BL
             if (CustomerExists(customer.Email))
                 throw new InvalidOperationException($"Customer with email '{customer.Email}' already exists.");
 
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
+            await _context.Customers.AddAsync(customer);
+            await _context.SaveChangesAsync();
             return customer.CustomerId;
         }
 

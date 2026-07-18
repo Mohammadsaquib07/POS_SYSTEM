@@ -26,7 +26,7 @@ namespace Products_Crud.Controllers
             var user = await _userService.Register(dto);
             return Ok(new {
                 message = "User registered successfully",
-                user.Id, user.Username, user.Email, user.CreatedAt
+                user.Id, user.Username, user.Email, user.CreatedDate
             });
         }
     }

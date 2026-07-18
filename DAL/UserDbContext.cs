@@ -13,6 +13,7 @@ namespace Products_Crud.DAL
         public DbSet<Invoices> Invoices { get; set; }
         public DbSet<InvoiceItem> InvoiceItems { get; set; }
         public DbSet<Customers> Customers { get; set; }
+        public DbSet<ProductsList> ProductsList {get;set; }
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {
         }
@@ -30,6 +31,9 @@ namespace Products_Crud.DAL
             modelBuilder.Entity<Customers>()
                 .Property(c => c.CreatedAt)
                 .HasDefaultValueSql("GETUTCDATE()");
+                
+                modelBuilder.Entity<User>().HasIndex(u => u.Username).IsUnique();
+modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
         }
     }
 }

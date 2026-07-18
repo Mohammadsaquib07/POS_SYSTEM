@@ -352,7 +352,6 @@ C:/Users/dell/source/repos/Products_Crud/obj/Debug/net8.0/staticwebassets.upToDa
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/Products_Crud.pdb
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/Azure.Core.dll
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/Azure.Identity.dll
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/BCrypt.Net-Next.dll
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/Humanizer.dll
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
@@ -522,3 +521,4 @@ C:/Users/dell/source/repos/Products_Crud/obj/Debug/net8.0/staticwebassets.upToDa
 /home/saquib/ERP-PROJECT/dotnetbackend/obj/Debug/net8.0/Products_Crud.pdb
 /home/saquib/ERP-PROJECT/dotnetbackend/obj/Debug/net8.0/Products_Crud.genruntimeconfig.cache
 /home/saquib/ERP-PROJECT/dotnetbackend/obj/Debug/net8.0/ref/Products_Crud.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/BCrypt-Net-Next.dll

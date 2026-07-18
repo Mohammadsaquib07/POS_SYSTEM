@@ -6,8 +6,6 @@ namespace Products_Crud.DTOs
     {
         public string Name { get; set; } = null!;
         public string? Email { get; set; }
-        public string? Phone { get; set; }
-        public string? BillingAddress { get; set; }
     }
     public class InvoiceItemRequestDto
     {

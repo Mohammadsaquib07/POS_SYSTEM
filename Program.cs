@@ -2,7 +2,7 @@
 using Products_Crud.ExceptionMiddleware;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.EntityFrameworkCore;
+using System.Data;
 using Products_Crud.Interfaces;
 using Products_Crud.Services;
 using Products_Crud.Filters;
@@ -13,9 +13,6 @@ using Products_Crud.BL;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-// var env = builder.Environment.EnvironmentName;
-// Console.WriteLine($"Environment: {env}");
-// Configure JSON serialization to ignore circular references
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -57,6 +54,8 @@ builder.Services.AddScoped<DashboardService>();
 builder.Services.AddScoped<PasswordService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<JwtService>();
+builder.Services.AddScoped<IUsersListRepository, UserRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",

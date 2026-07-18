@@ -12,7 +12,7 @@
 
 	<ItemGroup>
 		<!-- Downgraded packages to .NET 8 compatible versions -->
-		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+		<PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />

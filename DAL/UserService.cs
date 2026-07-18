@@ -25,7 +25,7 @@ namespace Products_Crud.DAL
                 Username = dto.Username,
                 Email = dto.Email,
                 PasswordHash = hashedPassword,
-                CreatedAt = DateTime.UtcNow
+                CreatedDate = DateTime.UtcNow
             };
             _context.Users.Add(userObj);
             await _context.SaveChangesAsync();

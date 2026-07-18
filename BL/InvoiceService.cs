@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Products_Crud.DTOs;
+using Products_Crud.DTOs.ResponseDtos;
 using Products_Crud.Interfaces;
 using Products_Crud.Model;
 
@@ -34,73 +35,51 @@ namespace Products_Crud.BL
             _customerRepository = customerRepository;
             _productRepository = productRepository;
         }
-        public  int CreateInvoice(CreateInvoiceRequest request)
+        public async System.Threading.Tasks.Task<InvoiceResponseDto> CreateInvoiceAsync(CreateInvoiceRequest request)
         {
-            if (request == null) 
+            if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            // Step 1️⃣ : Validate customer ID
-            if (request.CustomerId == null || request.CustomerId <= 0)
-                throw new InvalidOperationException("Valid CustomerId is required. Please select a customer.");
-
-            // Step 2️⃣ : Validate items exist
             if (request.Items == null || request.Items.Count == 0)
                 throw new InvalidOperationException("Invoice must have at least one item. Please add items to the cart.");
 
-            // Step 3️⃣ : Process items and calculate totals
-            var (subtotal, invoiceItems) = ProcessAndValidateItems(request.Items);
+            if (request.IsNewCustomer)
+            {
+                if (request.Customer == null)
+                    throw new InvalidOperationException("Customer information is required for new customer.");
 
-            // Step 4️⃣ : Calculate tax and total
+                ValidateCustomerData(request.Customer);
+                request.CustomerId = await CreateNewCustomerAsync(request.Customer);
+            }
+            else
+            {
+                if (request.CustomerId == null || request.CustomerId <= 0)
+                    throw new InvalidOperationException("Valid CustomerId is required. Please select a customer.");
+            }
+
+            var (subtotal, invoiceItems) = await ProcessAndValidateItemsAsync(request.Items);
             decimal taxAmount = CalculateTax(subtotal);
             decimal totalAmount = subtotal + taxAmount;
 
-            // Step 5️⃣ : Create invoice header
             var invoice = new Invoices
             {
-                CustomerId = request.CustomerId.Value,
+                CustomerId = request.CustomerId!.Value,
                 InvoiceNumber = GenerateInvoiceNumber(),
                 InvoiceDate = request.InvoiceDate == default ? DateTime.UtcNow : request.InvoiceDate,
                 Subtotal = subtotal,
                 TaxAmount = taxAmount,
                 TotalAmount = totalAmount,
                 Notes = request.Notes,
-                CreatedBy = "POS_System"
+                CreatedBy = "ERP_System"
             };
 
-            // Step 6️⃣ : Save invoice header
-            int invoiceId = _invoiceCreate.AddInvoice(invoice);
-            // var invoiceDetailes = _invoiceCreate.AddInvoice(invoice);
-
-            // Step 7️⃣ : Save all line items
-            foreach (var item in invoiceItems)
-            {
-                item.InvoiceId = invoiceId;
-                _invoiceCreate.AddInvoiceItem(item);
-            }
-
-            return invoiceId;
+            int invoiceId = await _invoiceCreate.SaveInvoiceWithItemsAsync(invoice, invoiceItems);
+            var savedInvoice = await _invoiceRead.GetInvoiceAsync(invoiceId);
+            return MapToInvoiceResponseDto(savedInvoice);
         }
         private string GenerateInvoiceNumber()
         {
             return $"INV-{DateTime.UtcNow:yyyyMMddHHmmss}";
-        }
-        public int CreateCustomerAndInvoice(CreateInvoiceRequest request)
-        {
-            if (request == null) 
-                throw new ArgumentNullException(nameof(request));
-
-            if (request.Customer == null) 
-                throw new InvalidOperationException("Customer information is required for new customer.");
-
-            // --------- STEP 1: Validate Customer Fields ----------
-            ValidateCustomerData(request.Customer);
-
-            // --------- STEP 2: Create Customer ----------
-            int customerId = CreateNewCustomer(request.Customer);
-
-            // --------- STEP 3: Create Invoice for New Customer ----------
-            request.CustomerId = customerId;
-            return CreateInvoice(request);
         }
 
         // ============================================
@@ -116,15 +95,6 @@ namespace Products_Crud.BL
 
             if (!IsValidEmail(customer.Email))
                 throw new InvalidOperationException("Customer email format is invalid.");
-
-            if (string.IsNullOrWhiteSpace(customer.Phone))
-                throw new InvalidOperationException("Customer phone is required.");
-
-            if (!IsValidPhone(customer.Phone))
-                throw new InvalidOperationException("Customer phone format is invalid. Phone must be 10-15 digits.");
-
-            if (string.IsNullOrWhiteSpace(customer.BillingAddress))
-                throw new InvalidOperationException("Customer billing address is required.");
         }
 
         // ============================================
@@ -138,29 +108,26 @@ namespace Products_Crud.BL
         /// - Create invoice line item with product details
         /// - Accumulate subtotal
         /// </summary>
-        private (decimal subtotal, List<InvoiceItem> items) ProcessAndValidateItems(List<InvoiceItemRequestDto> cartItems)
+        private async System.Threading.Tasks.Task<(decimal subtotal, List<InvoiceItem> items)> ProcessAndValidateItemsAsync(List<InvoiceItemRequestDto> cartItems)
         {
             decimal subtotal = 0;
             var invoiceItems = new List<InvoiceItem>();
 
             foreach (var cartItem in cartItems)
             {
-                // Validate quantity
                 if (cartItem.Quantity <= 0)
                     throw new InvalidOperationException($"Item quantity must be greater than 0.");
 
-                // Fetch product from database
-                var product = _productRepository.GetByIdAsync(cartItem.ProductId).Result;
+                var product = await _productRepository.GetByIdAsync(cartItem.ProductId);
                 if (product == null)
                     throw new InvalidOperationException($"Product with ID {cartItem.ProductId} not found. Please add a valid product.");
 
-                // Calculate line total
                 decimal lineTotal = product.Price * cartItem.Quantity;
                 subtotal += lineTotal;
 
-                // Create invoice line item
                 var invoiceItem = new InvoiceItem
                 {
+                    ProductId = cartItem.ProductId,
                     ProductName = product.Name,
                     Price = product.Price,
                     Quantity = cartItem.Quantity,
@@ -191,20 +158,18 @@ namespace Products_Crud.BL
         /// <summary>
         /// Create a new customer record in database
         /// </summary>
-        private int CreateNewCustomer(CreateCustomerDto customerData)
+        private async System.Threading.Tasks.Task<int> CreateNewCustomerAsync(CreateCustomerDto customerData)
         {
             try
             {
                 var newCustomer = new Customers
                 {
                     Name = customerData.Name.Trim(),
-                    Email = customerData.Email.Trim().ToLower(),
-                    Phone = customerData.Phone.Trim(),
-                    BillingAddress = customerData.BillingAddress.Trim()
+                    Email = (customerData.Email ?? "").Trim().ToLower()
                 };
 
-                int customerId = _customerRepository.AddCustomer(newCustomer);
-                
+                int customerId = await _customerRepository.AddCustomerAsync(newCustomer);
+
                 if (customerId <= 0)
                     throw new InvalidOperationException("Failed to create customer. Invalid customer ID returned.");
 
@@ -212,7 +177,7 @@ namespace Products_Crud.BL
             }
             catch (InvalidOperationException)
             {
-                throw; // Re-throw validation errors as-is
+                throw;
             }
             catch (Exception ex)
             {
@@ -236,32 +201,65 @@ namespace Products_Crud.BL
                 return false;
             }
         }
-        
-        private bool IsValidPhone(string phone)
-        {
-            if (string.IsNullOrWhiteSpace(phone)) return false;
-            
-            // Remove common phone separators
-            string cleanPhone = System.Text.RegularExpressions.Regex.Replace(phone, @"[\s\-\(\)\+]", "");
-            
-            // Check if only digits remain and length is between 10-15
-            return System.Text.RegularExpressions.Regex.IsMatch(cleanPhone, @"^\d{10,15}$");
-        }
 
         // ============================================
         // READ OPERATIONS
         // ============================================
-        public Invoices GetInvoiceById(int invoiceId)
+        public async System.Threading.Tasks.Task<InvoiceResponseDto> GetInvoiceByIdAsync(int invoiceId)
         {
             if (invoiceId <= 0)
                 throw new InvalidOperationException("Invalid invoice ID");
-            
-            return _invoiceRead.GetInvoice(invoiceId);
+
+            var invoice = await _invoiceRead.GetInvoiceAsync(invoiceId);
+            return MapToInvoiceResponseDto(invoice);
         }
 
-        public List<Invoices> GetAllInvoices()
+        public async System.Threading.Tasks.Task<List<InvoiceResponseDto>> GetAllInvoicesAsync()
         {
-            return _invoiceRead.GetAllInvoices();
+            var invoices = await _invoiceRead.GetAllInvoicesAsync();
+            return invoices.Select(i => MapToInvoiceResponseDto(i)).ToList();
+        }
+
+        // ============================================
+        // MAPPING HELPER
+        // ============================================
+        private InvoiceResponseDto MapToInvoiceResponseDto(Invoices invoice)
+        {
+            if (invoice == null)
+                throw new ArgumentNullException(nameof(invoice));
+
+            var customerDto = new CustomerResponseDto
+            {
+                CustomerId = invoice.CustomerId,
+                Name = invoice.Customer?.Name ?? "Unknown",
+                Email = invoice.Customer?.Email,
+                Phone = invoice.Customer?.Phone,
+                BillingAddress = invoice.Customer?.BillingAddress
+            };
+
+            var itemDtos = invoice.Items?.Select(item => new InvoiceItemResponseDto
+            {
+                ProductId = item.ProductId,
+                ProductName = item.ProductName,
+                Quantity = item.Quantity,
+                UnitPrice = item.Price,
+                LineTotal = item.Total
+            }).ToList() ?? new List<InvoiceItemResponseDto>();
+
+            return new InvoiceResponseDto
+            {
+                InvoiceId = invoice.InvoiceId,
+                InvoiceNumber = invoice.InvoiceNumber,
+                InvoiceDate = invoice.InvoiceDate,
+                SubTotal = invoice.Subtotal,
+                TaxAmount = invoice.TaxAmount,
+                TotalAmount = invoice.TotalAmount,
+                Notes = invoice.Notes,
+                CreatedBy = invoice.CreatedBy,
+                CreatedAt = invoice.CreatedAt,
+                Customer = customerDto,
+                Items = itemDtos
+            };
         }
     }
 }
