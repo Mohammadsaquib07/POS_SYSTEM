@@ -18,7 +18,7 @@ namespace Products_Crud.Controllers
         }
 
 
-      [HttpGet] 
+        [HttpGet] 
         public async Task<IActionResult> GetAll()
         {
             var supplier = await supplierService.GetAllAsync();

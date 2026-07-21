@@ -15,6 +15,10 @@ using Erp.interfaces.SupplierRepo;
 using Erp.Dal.SupplierImplementation;
 using Erp.Bl.IsupplierInterface;
 using Erp.Bl.SupplierService;
+using Erp.interfaces.Purchase;
+using Erp.Dal.PurchaseInvoiceImplementation;
+using Erp.Bl.PuchaseInvoice;
+using Erp.Dto.PurchaseService;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
@@ -62,6 +66,8 @@ builder.Services.AddScoped<IUsersListRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ISupplierRepository,SupplierRepository>();
 builder.Services.AddScoped<ISupplierService, SupplierService>();
+builder.Services.AddScoped<IPurchaseInvoiceRepository, PurchaseInvoiceRepository>();
+builder.Services.AddScoped<IPurchaseInvoiceService, PurchaseInvoiceService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
