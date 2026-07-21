@@ -11,6 +11,10 @@ using Products_Crud.BAL;
 using Products_Crud.DAL;
 using Products_Crud.BL;
 using System.Text;
+using Erp.interfaces.SupplierRepo;
+using Erp.Dal.SupplierImplementation;
+using Erp.Bl.IsupplierInterface;
+using Erp.Bl.SupplierService;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
@@ -56,6 +60,8 @@ builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<IUsersListRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ISupplierRepository,SupplierRepository>();
+builder.Services.AddScoped<ISupplierService, SupplierService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
