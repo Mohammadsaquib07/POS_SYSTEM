@@ -20,6 +20,7 @@ namespace Products_Crud.Controllers
         {
             _productService = productService;
         }
+        
         [HttpGet]
         public async Task<IActionResult> GetAllItems()
         {

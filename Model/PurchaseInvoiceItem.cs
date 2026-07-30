@@ -9,7 +9,7 @@ namespace Erp.Model.PurchaseInvoiceItemEntities
         public int PurchaseInvoiceId { get; set; }
         public PurchaseInvoice PurchaseInvoice { get; set; }
         public int ProductId { get; set; }
-        public ProductsList Product { get; set; }          // your existing product entity
+        public ProductsList Product { get; set; }
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal TotalPrice { get; set; }

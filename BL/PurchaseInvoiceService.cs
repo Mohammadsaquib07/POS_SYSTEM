@@ -31,6 +31,7 @@ namespace Erp.Bl.PuchaseInvoice
                 Id = pi.Id,
                 InvoiceNumber = pi.InvoiceNumber,
                 SupplierName = pi.Supplier?.Name,
+                SupplierId = pi.SupplierId,
                 InvoiceDate = pi.InvoiceDate,
                 TotalAmount = pi.TotalAmount,
                 Status = pi.Status.ToString()
