@@ -15,12 +15,14 @@ namespace Erp.Bl.PuchaseInvoice
     public class PurchaseInvoiceService : IPurchaseInvoiceService
     {
         private readonly IPurchaseInvoiceRepository _purchaseInvoiceRepo;
+        private readonly ILogger<PurchaseInvoiceService> _logger;
         private readonly UserDbContext _context;
 
-        public PurchaseInvoiceService(IPurchaseInvoiceRepository repository, UserDbContext context)
+        public PurchaseInvoiceService(IPurchaseInvoiceRepository repository, UserDbContext context,ILogger<PurchaseInvoiceService> logger)
         {
             _purchaseInvoiceRepo = repository;
             _context = context;
+            _logger = logger;
         }
 
         public async Task<List<PurchaseInvoiceListDto>> GetAllAsync()
@@ -94,6 +96,34 @@ namespace Erp.Bl.PuchaseInvoice
             await _context.SaveChangesAsync();
 
             return new List<PurchaseInvoiceResponseDto> { new PurchaseInvoiceResponseDto { Success = true, Message = "Purchase invoice created.", Id = invoice.Id } };
+        }
+
+        public async Task<PurchaseInvoiceListDto?> GetByIdAsync(int Id)
+        {
+            var invoice = await _purchaseInvoiceRepo.GetByIdAsync(Id);
+            if (invoice == null)
+            {
+                _logger.LogWarning("Purchase invoice {Id} not found",Id);
+                return null;
+            }
+
+            return new PurchaseInvoiceListDto
+            {
+                Id = invoice.Id,
+                InvoiceDate = invoice.InvoiceDate,
+                InvoiceNumber = invoice.InvoiceNumber,
+                SupplierName = invoice.Supplier?.Name ?? "N/A",
+                TotalAmount = invoice.TotalAmount,
+                Status = invoice.Status.ToString()
+            };
+        }
+
+        public async Task<bool> DeleteAsync(int Id){
+            var delete = await _purchaseInvoiceRepo.DeleteAsync(Id); 
+            if(!delete){
+                _logger.LogWarning("Attempted to delete non-existent invoice {Id} ",Id);
+            }
+            return delete;
         }
     }
 }

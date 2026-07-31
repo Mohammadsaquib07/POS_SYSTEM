@@ -8,5 +8,8 @@ namespace Erp.Dto.PurchaseService
     {
         Task<List<PurchaseInvoiceListDto>> GetAllAsync();
         Task<List<PurchaseInvoiceResponseDto>> CreateAsync(CreatePurchaseInvoiceDto dto);
+        Task<PurchaseInvoiceListDto?> GetByIdAsync(int Id);
+        Task<bool> DeleteAsync(int Id);
+        
     }
 }

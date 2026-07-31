@@ -4,41 +4,48 @@ using Products_Crud.DTOs;
 using Products_Crud.DAL;
 using System.Linq;
 using System.Threading.Tasks;
+using Erp.Dto.PurchaseService;
 
 [ApiController]
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
-    private readonly UserDbContext _context; // Your existing EF Core DbContext
+    private readonly IPurchaseInvoiceService _purchaseservice;
 
-    public ProductsController(UserDbContext context)
+    public ProductsController(IPurchaseInvoiceService purchaseservice)
     {
-        _context = context;
+        _purchaseservice = purchaseservice;
     }
 
-    [HttpGet("search")]
-    public async Task<IActionResult> Search([FromQuery] string query)
+    [HttpGet("{Id}")]
+    public async Task<IActionResult> GetPurchaseById(int Id)
     {
-        // Guard clause: If user types nothing or only 1 letter, don't hit the DB.
-        if (string.IsNullOrWhiteSpace(query) || query.Length < 2)
+        if(Id <= 0)
         {
-            return Ok(new List<ProductSearchResponseDto>());
+            return BadRequest(new {message="Invalid Invoice Id"});
+        }
+        var invoice = await _purchaseservice.GetByIdAsync(Id);
+
+        if(invoice == null)
+        {
+            return NotFound(new{message=$"Invoice with Id{Id} not found"});
+        }
+        return Ok(invoice);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int Id)
+    {
+        if (Id <= 0)
+        {
+            return BadRequest(new {message="Invalid invoice id"});
+        }
+        var delete = await _purchaseservice.DeleteAsync(Id);
+        if (!delete)
+        {
+            return NotFound(new {message=$"Invoice with {Id} not found"});
         }
 
-        // Perform case-insensitive search and select only what we need
-        var matchedProducts = await _context.ProductsList
-            .Where(p => p.Name.Contains(query)) 
-            .AsNoTracking() // Read-only performance optimization
-            .Take(10)       // Cap results so the network payload stays microscopic
-            .Select(p => new ProductSearchResponseDto
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Price = (decimal)p.Price, // Cast if your current DB model is still using double
-                StockQuantity = p.StockQuantity
-            })
-            .ToListAsync();
-
-        return Ok(matchedProducts);
+        return NoContent();
     }
 }
