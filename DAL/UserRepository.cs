@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using MyApp.Models;
 using Products_Crud.DAL;
 
 public class UserRepository : IUsersListRepository
@@ -47,4 +48,11 @@ public class UserRepository : IUsersListRepository
 
         return result.FirstOrDefault(); // new CompanyId
     }
+
+//     public async Task<User> GetUserByCompanyAndUsernameAsync(string companyName, string username)
+// {
+//     return await _UserDbContextObj.Users
+//         .Include(u => u.Company)
+//         .SingleOrDefaultAsync(u => u.Username == username && u.Company.CompanyName == companyName);
+// }
 }

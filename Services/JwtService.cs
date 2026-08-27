@@ -1,6 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+
 namespace Products_Crud.Services
 {
     public class JwtService
@@ -10,21 +11,26 @@ namespace Products_Crud.Services
         {
             _configuration = configuration;
         }
-        public string GenerateToken(string username)
+
+        public string GenerateToken(string username, int companyId)
         {
             var securityKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
             var claims = new[]
             {
-                new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Name, username)
+                new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Name, username),
+                new System.Security.Claims.Claim("companyId", companyId.ToString())
             };
+
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
                 expires: DateTime.Now.AddHours(1),
                 signingCredentials: credentials);
+
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Erp.ModelCompanies;
 using Microsoft.AspNetCore.Identity;
 
 namespace Products_Crud.Model
@@ -17,6 +18,9 @@ namespace Products_Crud.Model
 
         public DateTime CreatedDate { get; set; }
 
-        public bool IsActive { get; set; } = true;   // new column
+        public bool IsActive { get; set; } = true;
+
+        public int CompanyId { get; set; }
+        public Company Company { get; set; }
     }
 }

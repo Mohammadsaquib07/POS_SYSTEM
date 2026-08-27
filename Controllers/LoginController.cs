@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Products_Crud.DAL;
 using Products_Crud.DTOs;
 using Products_Crud.Services;
@@ -19,9 +20,13 @@ namespace Products_Crud.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequestDto request)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
-            var user = _context.Users.SingleOrDefault(u => u.Username == request.Username);
+            var user = await _context.Users
+                .Include(u => u.Company)
+                .SingleOrDefaultAsync(u =>
+                    u.Username == request.Username &&
+                    u.Company.CompanyName == request.CompanyName);
 
             if (user == null)
                 return Unauthorized("Invalid credentials");
@@ -31,9 +36,10 @@ namespace Products_Crud.Controllers
             if (!isValid)
                 return Unauthorized("Invalid credentials");
 
-            var token = _jwt.GenerateToken(user.Username);
+            var token = _jwt.GenerateToken(user.Username, user.CompanyId);
 
             return Ok(new { Token = token });
         }
+    
     }
 }
