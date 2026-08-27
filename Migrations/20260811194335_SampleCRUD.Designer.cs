@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Products_Crud.DAL;
 
@@ -11,9 +12,11 @@ using Products_Crud.DAL;
 namespace Products_Crud.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260811194335_SampleCRUD")]
+    partial class SampleCRUD
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,32 @@ namespace Products_Crud.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Erp.Model.Entities.SampleProducts.SampleProducts", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("StockQuantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SampleProducts");
+                });
 
             modelBuilder.Entity("Erp.Model.Entities.Supplier", b =>
                 {
@@ -61,41 +90,6 @@ namespace Products_Crud.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Suppliers");
-                });
-
-            modelBuilder.Entity("Erp.Model.Entities.variantsproducts.ProductVariant", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ItemId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("PurchasePrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Sku")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StockQty")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ValuesJson")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ItemId");
-
-                    b.ToTable("ProductVariants");
                 });
 
             modelBuilder.Entity("Erp.Model.PuchaseInvoicEntities.PurchaseInvoice", b =>
@@ -451,17 +445,6 @@ namespace Products_Crud.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Erp.Model.Entities.variantsproducts.ProductVariant", b =>
-                {
-                    b.HasOne("Products_Crud.Model.Items", "Item")
-                        .WithMany("Variants")
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Item");
-                });
-
             modelBuilder.Entity("Erp.Model.PuchaseInvoicEntities.PurchaseInvoice", b =>
                 {
                     b.HasOne("Erp.Model.Entities.Supplier", "Supplier")
@@ -557,11 +540,6 @@ namespace Products_Crud.Migrations
             modelBuilder.Entity("Products_Crud.Model.Invoices", b =>
                 {
                     b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("Products_Crud.Model.Items", b =>
-                {
-                    b.Navigation("Variants");
                 });
 
             modelBuilder.Entity("Products_Crud.Model.Order", b =>

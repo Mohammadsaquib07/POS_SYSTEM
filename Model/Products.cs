@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Erp.interfaces.Tenant;
 
 namespace Products_Crud.Model
 {
     [Table("Products")]
-public class ProductsList
+public class ProductsList:ITenantEntity
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
@@ -13,5 +14,6 @@ public class ProductsList
     public string? Category { get; set; }
     public bool IsActive { get; set; } = true;
     public DateTime CreatedOn { get; set; }
+    public int CompanyId { get; set; } 
 }
 }

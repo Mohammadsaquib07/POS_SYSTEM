@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Erp.interfaces.Tenant;
 
 namespace Products_Crud.Model
 {
-    public class Customers
+    public class Customers :ITenantEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -14,5 +15,6 @@ namespace Products_Crud.Model
         public string? BillingAddress { get; set; }
         public DateTime CreatedAt { get; set; }
         public ICollection<Invoices>? Invoices { get; set; }
+        public int CompanyId { get; set; } 
     }
 }

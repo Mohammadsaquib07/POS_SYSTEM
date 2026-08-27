@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Erp.interfaces.Tenant;
 
 namespace Products_Crud.Model
 {
-    public class Invoices
+    public class Invoices:ITenantEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -21,5 +22,7 @@ namespace Products_Crud.Model
         public DateTime CreatedAt { get; set; }
         public Customers? Customer { get; set; }       // Many-to-One
         public ICollection<InvoiceItem>? Items { get; set; }  // One-to-Many
+
+        public int CompanyId { get; set; } 
     }
 }

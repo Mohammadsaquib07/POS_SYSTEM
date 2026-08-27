@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Erp.interfaces.Tenant;
 
 namespace Products_Crud.Model
 {
-    public class InvoiceItem
+    public class InvoiceItem:ITenantEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,5 +18,6 @@ namespace Products_Crud.Model
         public decimal Price { get; set; }
         public decimal Total { get; set; }
         public Invoices? Invoice { get; set; }
+        public int CompanyId { get; set; } 
     }
 }

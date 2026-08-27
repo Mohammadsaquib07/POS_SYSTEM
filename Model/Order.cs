@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Erp.interfaces.Tenant;
 
 namespace Products_Crud.Model
 {
-  public class Order
+  public class Order:ITenantEntity
   {
     public int Id { get; set; }
     public DateTime OrderDate { get; set; }
@@ -14,5 +15,6 @@ namespace Products_Crud.Model
     public int CustomerId { get; set; }
     public Grahaq? Grahaqs { get; set; }
     public ICollection<OrderItem>? Items { get; set; }
+    public int CompanyId { get; set; } 
   }
 }

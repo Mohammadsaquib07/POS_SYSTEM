@@ -28,12 +28,12 @@ public class ProductsController : ControllerBase
 
         if(invoice == null)
         {
-            return NotFound(new{message=$"Invoice with Id{Id} not found"});
+            return NotFound(new{message=$"Invoice with Id:{Id} not found"});
         }
         return Ok(invoice);
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{Id}")]
     public async Task<IActionResult> Delete(int Id)
     {
         if (Id <= 0)

@@ -1,8 +1,9 @@
+using Erp.interfaces.Tenant;
 using Erp.Model.PuchaseInvoicEntities;
 
 namespace Erp.Model.Entities
 {
-public class Supplier
+public class Supplier:ITenantEntity
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -14,7 +15,7 @@ public class Supplier
     public SupplierPaymentMode PaymentMode { get; set; } = SupplierPaymentMode.Cash;
     public bool IsActive { get; set; } = true;
     public DateTime CreatedDate { get; set; }
-
+    public int CompanyId { get; set; } 
     public ICollection<PurchaseInvoice> PurchaseInvoices { get; set; } = new List<PurchaseInvoice>();
 }
 public enum SupplierPaymentMode
@@ -23,5 +24,4 @@ public enum SupplierPaymentMode
     Credit = 1,
     BankTransfer = 2
 }
-
 }

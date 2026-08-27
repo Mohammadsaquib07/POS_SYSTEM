@@ -112,6 +112,7 @@ namespace Erp.Bl.PuchaseInvoice
                 Id = invoice.Id,
                 InvoiceDate = invoice.InvoiceDate,
                 InvoiceNumber = invoice.InvoiceNumber,
+                SupplierId = invoice.SupplierId,
                 SupplierName = invoice.Supplier?.Name ?? "N/A",
                 TotalAmount = invoice.TotalAmount,
                 Status = invoice.Status.ToString()

@@ -16,7 +16,8 @@ namespace Products_Crud.BL
 
         public async Task<IEnumerable<Items>> GetAllAsync()
         {
-            return await _context.Items.ToListAsync();
+            // return await _context.Items.ToListAsync();
+             return await _context.Items.Include(i => i.Variants).ToListAsync();
         }
 
         public async Task<Items?> GetByIdAsync(int id)

@@ -19,21 +19,34 @@ using Erp.interfaces.Purchase;
 using Erp.Dal.PurchaseInvoiceImplementation;
 using Erp.Bl.PuchaseInvoice;
 using Erp.Dto.PurchaseService;
+using Erp.Filters.ResponseAPI;
+using Erp.interfaces.PurchaseTabCards;
+using Erp.Dal.PurchaseCardsImplementation;
+using Erp.Bl.PurchaseTopCards;
+using Erp.Bl.PurchaseCardsDto.Concrete;
+using Erp.Bl.CurrentTenant;
+using Erp.Bl.CurrentTenantImplementation;
+using Erp.Bl.TenantSaveChanges;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ApiResponseFilter>();
+})
+.AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
     });
-    
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<UserDbContext>(options =>
+
+builder.Services.AddDbContext<UserDbContext>((serviceProvider, options) =>
+{
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("Sql_Connection_String")
-    )
-);
+    );
+    options.AddInterceptors(serviceProvider.GetRequiredService<TenantSaveChangesInterceptor>());
+});
 builder.Host.UseDefaultServiceProvider(option =>
 {
     option.ValidateScopes = true; // catch scope mismatches
@@ -64,10 +77,15 @@ builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<IUsersListRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<ISupplierRepository,SupplierRepository>();
+builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
 builder.Services.AddScoped<ISupplierService, SupplierService>();
 builder.Services.AddScoped<IPurchaseInvoiceRepository, PurchaseInvoiceRepository>();
 builder.Services.AddScoped<IPurchaseInvoiceService, PurchaseInvoiceService>();
+builder.Services.AddScoped<IPurchaseCardsRepository,PurchaseCardsRepository>();
+builder.Services.AddScoped<IPurchaseCardService,PurchaseCardService>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<TenantSaveChangesInterceptor>();
+builder.Services.AddScoped<ICurrentTenantService, CurrentTenantService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -96,13 +114,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 var app = builder.Build();
-app.UseCors("AllowAllOrigins");
 app.UseDeveloperExceptionPage();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseMiddleware<ExceptionMiddleware>();
-app.UseRouting();
 app.UseHttpsRedirection();
+app.UseRouting();
+app.UseCors("AllowAllOrigins");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

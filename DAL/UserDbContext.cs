@@ -1,4 +1,10 @@
-﻿using Erp.Model.Entities;
+﻿using System.Reflection;
+using Erp.Bl.CurrentTenant;
+using Erp.interfaces.Tenant;
+using Erp.Model.Entities;
+using Erp.Model.Entities.variantsproducts;
+
+// using Erp.Model.Entities.SampleProducts;
 using Erp.Model.PuchaseInvoicEntities;
 using Erp.Model.PurchaseInvoiceItemEntities;
 using Microsoft.EntityFrameworkCore;
@@ -8,8 +14,10 @@ namespace Products_Crud.DAL
 {
     public class UserDbContext : DbContext
     {
+        private readonly ICurrentTenantService _tenant;
         public DbSet<User> Users { get; set; }
         public DbSet<Items> Items { get; set; }
+        public DbSet<ProductVariant> ProductVariants { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Grahaq> Grahaqs { get; set; }
@@ -20,9 +28,11 @@ namespace Products_Crud.DAL
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }
         public DbSet<PurchaseInvoiceItem> PurchaseInvoiceItems { get; set; }
+        // public DbSet<SampleProducts> SampleProducts=>Set<SampleProducts>();
 
-        public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
+        public UserDbContext(DbContextOptions<UserDbContext> options, ICurrentTenantService iCurrentTenantService) : base(options)
         {
+            _tenant = iCurrentTenantService;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -67,6 +77,22 @@ namespace Products_Crud.DAL
                 .WithMany()
                 .HasForeignKey(item => item.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
+                
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                if (typeof(ITenantEntity).IsAssignableFrom(entityType.ClrType))
+                {
+                    var method = SetGlobalQueryMethod.MakeGenericMethod(entityType.ClrType);
+                    method.Invoke(this, new object[] { modelBuilder });
+                }
+            }
+        }
+
+        private static readonly MethodInfo SetGlobalQueryMethod =
+         typeof(UserDbContext).GetMethod(nameof(SetGlobalQuery), BindingFlags.NonPublic | BindingFlags.Instance)!;
+        private void SetGlobalQuery<T>(ModelBuilder builder) where T : class, ITenantEntity
+        {
+            builder.Entity<T>().HasQueryFilter(e => EF.Property<int>(e, "CompanyId") == _tenant.CompanyId);
         }
     }
 }
