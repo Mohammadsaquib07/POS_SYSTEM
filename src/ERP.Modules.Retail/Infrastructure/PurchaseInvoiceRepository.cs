@@ -1,14 +1,14 @@
 using Erp.interfaces.Purchase;
 using Erp.Model.PuchaseInvoicEntities;
 using Microsoft.EntityFrameworkCore;
-using Products_Crud.DAL;
+using ERP.Modules.Retail.Contracts;
 
 namespace Erp.Dal.PurchaseInvoiceImplementation
 {
     public class PurchaseInvoiceRepository : IPurchaseInvoiceRepository
     {
-        private readonly UserDbContext _context;
-        public PurchaseInvoiceRepository(UserDbContext context) => _context = context;
+        private readonly IRetailDbContext _context;
+        public PurchaseInvoiceRepository(IRetailDbContext context) => _context = context;
  
         public async Task<List<PurchaseInvoice>> GetAllAsync()
         {

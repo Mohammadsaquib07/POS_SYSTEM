@@ -1,4 +1,5 @@
 ﻿using Azure.Core;
+using ERP.ERP.Modules.Shared;
 using Microsoft.EntityFrameworkCore;
 using Products_Crud.DTOs;
 using Products_Crud.Model;
@@ -8,8 +9,8 @@ namespace Products_Crud.DAL
 {
     public class UserService
     {
-        private readonly UserDbContext _context;
-        public UserService(UserDbContext cntxtObj)
+        private readonly ISharedDbContext _context;
+        public UserService(ISharedDbContext cntxtObj)
         {
             _context = cntxtObj;
         }

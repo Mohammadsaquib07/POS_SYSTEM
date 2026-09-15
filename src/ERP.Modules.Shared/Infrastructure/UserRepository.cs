@@ -1,19 +1,19 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using ERP.ERP.Modules.Shared;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Products_Crud.DAL;
 
 public class UserRepository : IUsersListRepository
 {
-    private readonly UserDbContext _UserDbContextObj;
+    private readonly ISharedDbContext iSharedDbContext;
 
-    public UserRepository(UserDbContext instance)
+    public UserRepository(ISharedDbContext ISharedDbContextObj)
     {
-        _UserDbContextObj = instance;
+        iSharedDbContext = ISharedDbContextObj;
     }
 
     public async Task<int> CheckUserExistsAsync(string username, string email)
     {
-        var result = await _UserDbContextObj.Database
+        var result = await iSharedDbContext.Database
             .SqlQueryRaw<int>(
                 "EXEC usp_users_Exist @Username, @Email",
                 new SqlParameter("@Username", username),
@@ -25,7 +25,7 @@ public class UserRepository : IUsersListRepository
 
     public async Task<int> CreateUserAsync(string username, string email, string passwordHash, int companyId)
     {
-        var result = await _UserDbContextObj.Database
+        var result = await iSharedDbContext.Database
             .SqlQueryRaw<int>(
                 "EXEC Usp_Create_User @Username, @Email, @PasswordHash, @CompanyId",
                 new SqlParameter("@Username", username),
@@ -39,7 +39,7 @@ public class UserRepository : IUsersListRepository
 
     public async Task<int> CreateCompanyAsync(string companyName)
     {
-        var result = await _UserDbContextObj.Database
+        var result = await iSharedDbContext.Database
             .SqlQueryRaw<int>(
                 "EXEC Usp_Create_Company @CompanyName",
                 new SqlParameter("@CompanyName", companyName))
@@ -47,11 +47,4 @@ public class UserRepository : IUsersListRepository
 
         return result.FirstOrDefault(); // new CompanyId
     }
-
-//     public async Task<User> GetUserByCompanyAndUsernameAsync(string companyName, string username)
-// {
-//     return await _UserDbContextObj.Users
-//         .Include(u => u.Company)
-//         .SingleOrDefaultAsync(u => u.Username == username && u.Company.CompanyName == companyName);
-// }
 }

@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Erp.ModelCompanies;
-using Microsoft.AspNetCore.Identity;
 
 namespace Products_Crud.Model
 {

@@ -1,0 +1,14 @@
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/bin/Debug/net8.0/ERP.Modules.Retail.deps.json
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/bin/Debug/net8.0/ERP.Modules.Retail.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/bin/Debug/net8.0/ERP.Modules.Retail.pdb
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/bin/Debug/net8.0/ERP.Modules.Shared.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/bin/Debug/net8.0/ERP.Modules.Shared.pdb
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/obj/Debug/net8.0/ERP.Modules.Retail.csproj.AssemblyReference.cache
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/obj/Debug/net8.0/ERP.Modules.Retail.GeneratedMSBuildEditorConfig.editorconfig
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/obj/Debug/net8.0/ERP.Modules.Retail.csproj.CoreCompileInputs.cache
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/obj/Debug/net8.0/ERP.Modules.Retail.sourcelink.json
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/obj/Debug/net8.0/ERP.Modu.3993972C.Up2Date
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/obj/Debug/net8.0/ERP.Modules.Retail.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/obj/Debug/net8.0/refint/ERP.Modules.Retail.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/obj/Debug/net8.0/ERP.Modules.Retail.pdb
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/obj/Debug/net8.0/ref/ERP.Modules.Retail.dll

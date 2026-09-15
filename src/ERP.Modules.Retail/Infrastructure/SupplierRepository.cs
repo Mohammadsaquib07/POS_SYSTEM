@@ -1,14 +1,14 @@
 using Erp.interfaces.SupplierRepo;
 using Microsoft.EntityFrameworkCore;
-using Products_Crud.DAL;
 using Erp.Model.Entities;
+using ERP.Modules.Retail.Contracts;
 
 namespace Erp.Dal.SupplierImplementation
 {
     public class SupplierRepository : ISupplierRepository
     {
-        private readonly UserDbContext _userdbcontext;
-        public SupplierRepository(UserDbContext userdbcontext)
+        private readonly IRetailDbContext _userdbcontext;
+        public SupplierRepository(IRetailDbContext userdbcontext)
         {
             _userdbcontext = userdbcontext;
         }

@@ -6,14 +6,14 @@ using Products_Crud.Common.Enums;
 using Erp.Model.PuchaseInvoicEntities;
 using Erp.Model.PurchaseInvoiceItemEntities;
 using Microsoft.EntityFrameworkCore;
-using Products_Crud.DAL;
+using ERP.Modules.Retail.Contracts;
 
 public class PurchaseInvoiceService : IPurchaseInvoiceService
 {
-    private readonly UserDbContext _context;
+    private readonly IRetailDbContext _context;
     private readonly IPurchaseInvoiceRepository _repository;
 
-    public PurchaseInvoiceService(UserDbContext context, IPurchaseInvoiceRepository repository)
+    public PurchaseInvoiceService(IRetailDbContext context, IPurchaseInvoiceRepository repository)
     {
         _context = context;
         _repository = repository;

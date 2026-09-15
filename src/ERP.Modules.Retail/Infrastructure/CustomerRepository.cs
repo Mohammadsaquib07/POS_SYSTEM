@@ -1,27 +1,19 @@
 using Microsoft.EntityFrameworkCore;
-using Products_Crud.DAL;
 using Products_Crud.Model;
 using Products_Crud.Common.Contracts;
+using ERP.Modules.Retail.Contracts;
 
 namespace Products_Crud.BL
 {
-    /// <summary>
-    /// EF Core based repository for Customer operations
-    /// Provides clean LINQ-based data access
-    /// </summary>
     public class CustomerRepository : ICustomerCreate, ICustomerRead
     {
-        private readonly UserDbContext _context;
+        private readonly IRetailDbContext _context;
 
-        public CustomerRepository(UserDbContext context)
-        {
-            _context = context;
-        }
+            public CustomerRepository(IRetailDbContext context)
+            {
+                _context = context;
+            }
 
-        // --------- CREATE ----------
-        /// <summary>
-        /// Add a new customer to the database
-        /// </summary>
         public async System.Threading.Tasks.Task<int> AddCustomerAsync(Customer customer)
         {
             if (customer == null)
@@ -36,10 +28,6 @@ namespace Products_Crud.BL
             return customer.CustomerId;
         }
 
-        // --------- READ ----------
-        /// <summary>
-        /// Get a single customer by ID
-        /// </summary>
         public Customer? GetCustomer(int id)
         {
             if (id <= 0)
@@ -48,18 +36,10 @@ namespace Products_Crud.BL
             return _context.Customers.Find(id);
         }
 
-        /// <summary>
-        /// Get all customers from database
-        /// </summary>
         public IEnumerable<Customer> GetAllCustomers()
         {
             return _context.Customers.OrderBy(c => c.Name).ToList();
         }
-
-        // --------- HELPER ----------
-        /// <summary>
-        /// Check if customer with given email already exists
-        /// </summary>
         private bool CustomerExists(string email)
         {
             if (string.IsNullOrWhiteSpace(email))

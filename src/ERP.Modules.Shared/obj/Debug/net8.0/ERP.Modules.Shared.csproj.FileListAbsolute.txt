@@ -1,0 +1,11 @@
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/bin/Debug/net8.0/ERP.Modules.Shared.deps.json
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/bin/Debug/net8.0/ERP.Modules.Shared.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/bin/Debug/net8.0/ERP.Modules.Shared.pdb
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/obj/Debug/net8.0/ERP.Modules.Shared.csproj.AssemblyReference.cache
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/obj/Debug/net8.0/ERP.Modules.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/obj/Debug/net8.0/ERP.Modules.Shared.csproj.CoreCompileInputs.cache
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/obj/Debug/net8.0/ERP.Modules.Shared.sourcelink.json
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/obj/Debug/net8.0/ERP.Modules.Shared.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/obj/Debug/net8.0/refint/ERP.Modules.Shared.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/obj/Debug/net8.0/ERP.Modules.Shared.pdb
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/obj/Debug/net8.0/ref/ERP.Modules.Shared.dll

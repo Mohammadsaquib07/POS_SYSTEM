@@ -28,6 +28,8 @@ using Erp.Bl.PurchaseCardsDto.Concrete;
 using Erp.Bl.CurrentTenant;
 using Erp.Bl.CurrentTenantImplementation;
 using Erp.Bl.TenantSaveChanges;
+using ERP.Modules.Retail.Contracts;
+using ERP.ERP.Modules.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(options =>
@@ -88,6 +90,8 @@ builder.Services.AddScoped<IPurchaseCardService,PurchaseCardService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<TenantSaveChangesInterceptor>();
 builder.Services.AddScoped<ICurrentTenantService, CurrentTenantService>();
+builder.Services.AddScoped<ISharedDbContext>(sp => sp.GetRequiredService<UserDbContext>());
+builder.Services.AddScoped<IRetailDbContext>(sp => sp.GetRequiredService<UserDbContext>());
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",

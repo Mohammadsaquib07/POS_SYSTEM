@@ -2,14 +2,15 @@ using Microsoft.EntityFrameworkCore;
 using Products_Crud.DAL;
 using Products_Crud.Interfaces;
 using Products_Crud.Model;
+using ERP.Modules.Retail.Contracts;
 
 namespace Products_Crud.BL
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly UserDbContext _context;
+        private readonly IRetailDbContext _context;
 
-        public ProductRepository(UserDbContext context)
+        public ProductRepository(IRetailDbContext context)
         {
             _context = context;
         }

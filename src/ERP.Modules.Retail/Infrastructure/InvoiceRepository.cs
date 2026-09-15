@@ -1,27 +1,19 @@
 using Microsoft.EntityFrameworkCore;
-using Products_Crud.DAL;
 using Products_Crud.Model;
 using Products_Crud.Common.Contracts;
+using ERP.Modules.Retail.Contracts;
 
 namespace Products_Crud.BL
 {
-    /// <summary>
-    /// EF Core based repository for Invoice and InvoiceItem operations
-    /// Provides clean LINQ-based data access
-    /// </summary>
     public class InvoiceRepository : IInvoiceCreate, IInvoiceRead
     {
-        private readonly UserDbContext _context;
+        private readonly IRetailDbContext _context;
 
-        public InvoiceRepository(UserDbContext context)
+        public InvoiceRepository(IRetailDbContext context)
         {
             _context = context;
         }
 
-        // --------- CREATE INVOICE ----------
-        /// <summary>
-        /// Add a new invoice to the database
-        /// </summary>
         public async System.Threading.Tasks.Task<int> AddInvoiceAsync(Invoice invoice)
         {
             if (invoice == null)
@@ -34,11 +26,6 @@ namespace Products_Crud.BL
             await _context.SaveChangesAsync();
             return invoice.InvoiceId;
         }
-
-        // --------- CREATE INVOICE ITEM ----------
-        /// <summary>
-        /// Add a line item to an invoice (called for each product in the invoice)
-        /// </summary>
         public async System.Threading.Tasks.Task AddInvoiceItemAsync(InvoiceItem item)
         {
             if (item == null)
@@ -54,10 +41,6 @@ namespace Products_Crud.BL
             await _context.SaveChangesAsync();
         }
 
-        // --------- READ INVOICE ----------
-        /// <summary>
-        /// Get a single invoice by ID with related data
-        /// </summary>
         public async System.Threading.Tasks.Task<Invoice> GetInvoiceAsync(int id)
         {
             if (id <= 0)
@@ -74,9 +57,6 @@ namespace Products_Crud.BL
             return invoice;
         }
 
-        /// <summary>
-        /// Get all invoices for a specific customer
-        /// </summary>
         public async System.Threading.Tasks.Task<IEnumerable<Invoice>> GetInvoicesByCustomerAsync(int customerId)
         {
             if (customerId <= 0)
@@ -88,11 +68,6 @@ namespace Products_Crud.BL
                 .OrderByDescending(i => i.CreatedAt)
                 .ToListAsync();
         }
-
-        // --------- ADDITIONAL READ METHODS ----------
-        /// <summary>
-        /// Get all invoices in the system
-        /// </summary>
         public async System.Threading.Tasks.Task<List<Invoice>> GetAllInvoicesAsync()
         {
             return await _context.Invoices
@@ -102,18 +77,13 @@ namespace Products_Crud.BL
                 .ToListAsync();
         }
 
-        /// <summary>
-        /// Get invoice by ID (for service layer)
-        /// </summary>
+
         public async System.Threading.Tasks.Task<Invoice> GetInvoiceByIdAsync(int invoiceId)
         {
-            return await GetInvoiceAsync(invoiceId); // Delegates to existing GetInvoiceAsync method
+            return await GetInvoiceAsync(invoiceId); 
         }
 
-        /// <summary>
-        /// Save invoice header and items together in a single transaction.
-        /// This method will also validate and decrement product stock.
-        /// </summary>
+
         public async System.Threading.Tasks.Task<int> SaveInvoiceWithItemsAsync(Invoice invoice, List<InvoiceItem> items)
         {
             if (invoice == null) throw new ArgumentNullException(nameof(invoice));

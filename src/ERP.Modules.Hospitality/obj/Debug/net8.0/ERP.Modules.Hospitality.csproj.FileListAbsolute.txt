@@ -1,0 +1,12 @@
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/bin/Debug/net8.0/ERP.Modules.Hospitality.deps.json
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/bin/Debug/net8.0/ERP.Modules.Hospitality.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/bin/Debug/net8.0/ERP.Modules.Hospitality.pdb
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/obj/Debug/net8.0/ERP.Modules.Hospitality.GeneratedMSBuildEditorConfig.editorconfig
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/obj/Debug/net8.0/ERP.Modules.Hospitality.AssemblyInfoInputs.cache
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/obj/Debug/net8.0/ERP.Modules.Hospitality.AssemblyInfo.cs
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/obj/Debug/net8.0/ERP.Modules.Hospitality.csproj.CoreCompileInputs.cache
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/obj/Debug/net8.0/ERP.Modules.Hospitality.sourcelink.json
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/obj/Debug/net8.0/ERP.Modules.Hospitality.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/obj/Debug/net8.0/refint/ERP.Modules.Hospitality.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/obj/Debug/net8.0/ERP.Modules.Hospitality.pdb
+/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Hospitality/obj/Debug/net8.0/ref/ERP.Modules.Hospitality.dll

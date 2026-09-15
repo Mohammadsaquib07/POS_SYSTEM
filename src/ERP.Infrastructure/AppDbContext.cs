@@ -7,13 +7,16 @@ using Erp.ModelCompanies;
 using Erp.Model.PuchaseInvoicEntities;
 using Erp.Model.PurchaseInvoiceItemEntities;
 using Microsoft.EntityFrameworkCore;
+using ERP.Modules.Retail.Contracts;
+using ERP.ERP.Modules.Shared;
 using Products_Crud.Model;
 
 namespace Products_Crud.DAL
 {
-    public class UserDbContext : DbContext
+     public class UserDbContext : DbContext, ISharedDbContext, IRetailDbContext
     {
         private readonly ICurrentTenantService _tenant;
+
         public DbSet<User> Users { get; set; }
         public DbSet<Items> Items { get; set; }
         public DbSet<ProductVariant> ProductVariants { get; set; }
@@ -102,6 +105,17 @@ namespace Products_Crud.DAL
                     method.Invoke(this, new object[] { modelBuilder });
                 }
             }
+        }
+
+        // Explicit interface implementation for SaveChangesAsync
+        async Task<int> ISharedDbContext.SaveChangesAsync()
+        {
+            return await base.SaveChangesAsync();
+        }
+
+        async Task<int> IRetailDbContext.SaveChangesAsync()
+        {
+            return await base.SaveChangesAsync();
         }
 
         private static readonly MethodInfo SetGlobalQueryMethod =

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Products_Crud.Model;
 using Products_Crud.Common.Contracts;
+using Microsoft.Extensions.Configuration;
 namespace Products_Crud.DAL
 {
     public class AddEmployeeRepository:IEmployeeRepository

@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using Products_Crud.DAL;
+using ERP.Modules.Retail.Contracts;
 using Products_Crud.Modules.Retail.Contracts;
 
 namespace Products_Crud.Modules.Retail.Application;
 
-internal sealed class RetailCustomerService(UserDbContext dbContext) : IRetailCustomerService
+internal sealed class RetailCustomerService(IRetailDbContext dbContext) : IRetailCustomerService
 {
     public Task<RetailCustomerDto?> GetCustomerAsync(
         int customerId,

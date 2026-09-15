@@ -4,13 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Products_Crud.DTOs;
+using ERP.Modules.Retail.Contracts;
 
 namespace Products_Crud.DAL
 {
     public class DashboardService
     {
-        private readonly UserDbContext _userDbContext;
-        public DashboardService(UserDbContext _userDbContextObj)
+        private readonly IRetailDbContext _userDbContext;
+        public DashboardService(IRetailDbContext _userDbContextObj)
         {
             _userDbContext = _userDbContextObj;
         }
