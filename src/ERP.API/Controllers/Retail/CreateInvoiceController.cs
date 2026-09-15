@@ -13,8 +13,6 @@ namespace Products_Crud.Controllers
         {
             _invoiceService = iinvoiceService;
         }
-
-        // --------- Create Invoice (new or existing customer) ----------
         [HttpPost("CreateInvoice")]
         public async System.Threading.Tasks.Task<IActionResult> CreateInvoice([FromBody] CreateInvoiceRequest request)
         {
@@ -68,7 +66,6 @@ namespace Products_Crud.Controllers
             }
         }
 
-        // --------- 3️⃣ Get Invoice by ID ----------
         [HttpGet("GetInvoice/{id}")]
         public async System.Threading.Tasks.Task<IActionResult> GetInvoiceById(int id)
         {
@@ -90,7 +87,6 @@ namespace Products_Crud.Controllers
             }
         }
 
-        // --------- 4️⃣ Get All Invoices ----------
         [HttpGet("GetAll")]
         public async System.Threading.Tasks.Task<IActionResult> GetAllInvoices()
         {
