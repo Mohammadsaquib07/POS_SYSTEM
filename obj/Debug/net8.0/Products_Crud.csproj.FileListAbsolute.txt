@@ -341,8 +341,6 @@ C:/Users/dell/source/repos/Products_Crud/obj/Debug/net8.0/staticwebassets.upToDa
 /home/saquib/POS_SYSTEM/obj/Debug/net8.0/Products_Crud.pdb
 /home/saquib/POS_SYSTEM/obj/Debug/net8.0/Products_Crud.genruntimeconfig.cache
 /home/saquib/POS_SYSTEM/obj/Debug/net8.0/ref/Products_Crud.dll
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/appsettings.Development.json
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/appsettings.json
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/package-lock.json
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/package.json
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/Products_Crud
@@ -522,3 +520,8 @@ C:/Users/dell/source/repos/Products_Crud/obj/Debug/net8.0/staticwebassets.upToDa
 /home/saquib/ERP-PROJECT/dotnetbackend/obj/Debug/net8.0/Products_Crud.genruntimeconfig.cache
 /home/saquib/ERP-PROJECT/dotnetbackend/obj/Debug/net8.0/ref/Products_Crud.dll
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/BCrypt-Net-Next.dll
+/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.API/Properties/launchSettings.json
+/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.API/Properties/serviceDependencies.json
+/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.API/Properties/serviceDependencies.local.json
+/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/appsettings.Development.json
+/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/appsettings.json
