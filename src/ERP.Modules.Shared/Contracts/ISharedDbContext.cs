@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Products_Crud.Model;
+using ERP.Modules.Shared.Domain;
 using System.Threading.Tasks;
 
-namespace ERP.ERP.Modules.Shared
+namespace ERP.Modules.Shared.Contracts
 {
     public interface ISharedDbContext
     {

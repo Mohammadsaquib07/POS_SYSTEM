@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Products_Crud.DTOs
+namespace ERP.Modules.Retail.DTOs
 {
     public class RecentOrderDto
     {

@@ -28,6 +28,9 @@
             "projectReferences": {
               "/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/ERP.Modules.Retail.csproj": {
                 "projectPath": "/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Retail/ERP.Modules.Retail.csproj"
+              },
+              "/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/ERP.Modules.Shared.csproj": {
+                "projectPath": "/home/saquib/ERP-PROJECT/dotnetbackend/src/ERP.Modules.Shared/ERP.Modules.Shared.csproj"
               }
             }
           }
@@ -61,7 +64,7 @@
             },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[7.0.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -238,7 +241,7 @@
             },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[7.0.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -273,6 +276,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

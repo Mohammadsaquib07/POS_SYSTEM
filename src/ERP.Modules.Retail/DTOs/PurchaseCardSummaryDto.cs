@@ -1,4 +1,4 @@
-namespace Erp.Dtos.PurchaseCardsDtos
+namespace ERP.Modules.Retail.DTOs
 {
     public class PurchaseCardSummaryDto
     {

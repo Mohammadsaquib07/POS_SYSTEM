@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Erp.ModelCompanies;
 
-namespace Products_Crud.Model
+namespace ERP.Modules.Shared.Domain
 {
     public class User
     {

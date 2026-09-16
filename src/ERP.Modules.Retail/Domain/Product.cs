@@ -1,7 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Erp.interfaces.Tenant;
+using ERP.Modules.Retail.Domain;
+using ERP.Modules.Retail.Application;
+using ERP.Modules.Retail.Contracts;
+using ERP.Modules.Retail.Controllers;
+using ERP.Modules.Retail.DTOs;
+using ERP.Modules.Retail.Infrastructure;
+using ERP.Modules.Retail.Enums;
+using ERP.Modules.Shared.Contracts;
 
-namespace Products_Crud.Model
+namespace ERP.Modules.Retail.Domain
 {
     [Table("Products")]
     public class Product : ITenantEntity

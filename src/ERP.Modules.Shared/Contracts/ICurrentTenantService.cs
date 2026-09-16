@@ -1,4 +1,4 @@
-namespace Erp.Bl.CurrentTenant
+namespace ERP.Modules.Shared.Contracts
 {
     public interface ICurrentTenantService
     {

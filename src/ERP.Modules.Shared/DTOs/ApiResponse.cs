@@ -1,4 +1,4 @@
-namespace Products_Crud.Common.DTOs
+namespace ERP.Modules.Shared.DTOs
 {
     public class ApiResponse<T>
     {

@@ -1,7 +1,7 @@
-﻿using Products_Crud.Model;
-using Products_Crud.Common.Contracts;
+﻿using ERP.Modules.Shared.Domain;
+using ERP.Modules.Shared.Contracts;
 
-namespace Products_Crud.BL
+namespace ERP.Modules.Shared.Application
 {
     public class UpdateEmployeeService : IEmployeeUpdateService
     {

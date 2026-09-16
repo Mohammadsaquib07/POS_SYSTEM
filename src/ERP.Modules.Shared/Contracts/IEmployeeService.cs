@@ -1,6 +1,6 @@
-﻿using Products_Crud.Model;
+﻿using ERP.Modules.Shared.Domain;
 
-namespace Products_Crud.BL
+namespace ERP.Modules.Shared.Application
 {
     public interface IEmployeeUpdateService
     {

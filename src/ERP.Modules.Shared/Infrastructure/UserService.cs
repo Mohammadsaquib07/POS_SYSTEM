@@ -1,11 +1,11 @@
 ﻿using Azure.Core;
-using ERP.ERP.Modules.Shared;
+using ERP.Modules.Shared.Contracts;
 using Microsoft.EntityFrameworkCore;
-using Products_Crud.DTOs;
-using Products_Crud.Model;
-using Products_Crud.Services;
+using ERP.Modules.Shared.DTOs;
+using ERP.Modules.Shared.Domain;
+using ERP.Modules.Shared.Application;
 
-namespace Products_Crud.DAL
+namespace ERP.Modules.Shared.Infrastructure
 {
     public class UserService
     {

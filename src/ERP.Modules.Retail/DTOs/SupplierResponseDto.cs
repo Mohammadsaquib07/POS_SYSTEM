@@ -1,4 +1,4 @@
-namespace Erp.Dto.Response.Dto
+namespace ERP.Modules.Retail.DTOs
 {
     public class SupplierResponseDto
     {

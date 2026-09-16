@@ -1,6 +1,6 @@
-using Erp.Bl.CurrentTenant;
-using Erp.interfaces.Tenant;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using ERP.Modules.Shared.Contracts;
+using ERP.Modules.Shared.Contracts;
 
 namespace Erp.Bl.TenantSaveChanges
 {

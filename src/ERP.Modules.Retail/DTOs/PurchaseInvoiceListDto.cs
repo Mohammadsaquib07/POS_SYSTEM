@@ -1,4 +1,4 @@
-namespace Erp.Dto.PurchaseInvoiceList
+namespace ERP.Modules.Retail.DTOs
 {
     public class PurchaseInvoiceListDto
     {

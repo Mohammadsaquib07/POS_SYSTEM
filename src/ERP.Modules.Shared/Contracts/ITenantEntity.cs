@@ -1,4 +1,4 @@
-namespace Erp.interfaces.Tenant
+namespace ERP.Modules.Shared.Contracts
 {   
     public interface ITenantEntity
     {

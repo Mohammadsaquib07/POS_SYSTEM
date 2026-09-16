@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-namespace Products_Crud.Services
+namespace ERP.Modules.Shared.Application
 {
     public class PasswordService
     {

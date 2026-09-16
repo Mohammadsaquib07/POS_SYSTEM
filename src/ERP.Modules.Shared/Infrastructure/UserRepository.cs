@@ -1,4 +1,4 @@
-﻿using ERP.ERP.Modules.Shared;
+﻿using ERP.Modules.Shared.Contracts;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 

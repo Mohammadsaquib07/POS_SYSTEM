@@ -1,4 +1,4 @@
-namespace Erp.Dtos.Response.Variant
+namespace ERP.Modules.Retail.DTOs
 {
      public class VariantResponseDto
     {

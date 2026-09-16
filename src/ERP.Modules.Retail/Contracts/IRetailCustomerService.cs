@@ -1,4 +1,4 @@
-namespace Products_Crud.Modules.Retail.Contracts;
+namespace ERP.Modules.Retail.Contracts;
 
 /// <summary>
 /// Public Retail boundary for other modules that require customer data.

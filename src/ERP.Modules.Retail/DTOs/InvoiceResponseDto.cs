@@ -1,4 +1,4 @@
-namespace Products_Crud.DTOs.ResponseDtos
+namespace ERP.Modules.Retail.DTOs
 {
     public class InvoiceResponseDto
     {

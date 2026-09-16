@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Products_Crud.DTOs;
-using Products_Crud.DTOs.ResponseDtos;
-using Products_Crud.Interfaces;
-using Products_Crud.Model;
-using Products_Crud.Common.Contracts;
+using ERP.Modules.Retail.Domain;
+using ERP.Modules.Retail.Application;
+using ERP.Modules.Retail.Contracts;
+using ERP.Modules.Retail.Controllers;
+using ERP.Modules.Retail.DTOs;
+using ERP.Modules.Retail.Infrastructure;
+using ERP.Modules.Retail.Enums;
 
-namespace Products_Crud.BL
+namespace ERP.Modules.Retail.Application
 {
     /// <summary>
     /// Invoice Service - Handles POS Invoice Generation (Like a Supermarket)

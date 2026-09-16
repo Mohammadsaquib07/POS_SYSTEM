@@ -1,4 +1,4 @@
-namespace Erp.interfaces.PurchaseTabCards
+namespace ERP.Modules.Retail.Contracts
 {
     public interface IPurchaseCardsRepository
     {

@@ -1,4 +1,4 @@
-namespace Erp.Dto.Request.Dtos
+namespace ERP.Modules.Retail.DTOs
 {
     public class CreateSupplierDto
     {

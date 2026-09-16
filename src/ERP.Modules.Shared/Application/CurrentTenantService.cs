@@ -1,6 +1,6 @@
-using Erp.Bl.CurrentTenant;
 using Microsoft.AspNetCore.Http;
 using System;
+using ERP.Modules.Shared.Contracts;
 
 namespace Erp.Bl.CurrentTenantImplementation
 {

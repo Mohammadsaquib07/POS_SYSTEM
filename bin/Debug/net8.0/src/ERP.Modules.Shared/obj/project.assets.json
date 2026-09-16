@@ -120,16 +120,17 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Data.SqlClient/6.0.2": {
+      "Microsoft.Data.SqlClient/7.0.3": {
         "type": "package",
         "dependencies": {
-          "Azure.Identity": "1.11.4",
           "Microsoft.Bcl.Cryptography": "8.0.0",
-          "Microsoft.Data.SqlClient.SNI.runtime": "6.0.2",
+          "Microsoft.Data.SqlClient.Extensions.Abstractions": "[7.0.3, 8.0.0)",
+          "Microsoft.Data.SqlClient.Internal.Logging": "[7.0.3, 8.0.0)",
+          "Microsoft.Data.SqlClient.SNI.runtime": "[6.0.3, 7.0.0)",
           "Microsoft.Extensions.Caching.Memory": "8.0.1",
-          "Microsoft.IdentityModel.JsonWebTokens": "7.5.0",
-          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.5.0",
-          "Microsoft.SqlServer.Server": "1.0.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "8.16.0",
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.16.0",
+          "Microsoft.SqlServer.Server": "[1.0.0, 2.0.0)",
           "System.Configuration.ConfigurationManager": "8.0.1",
           "System.Security.Cryptography.Pkcs": "8.0.1"
         },
@@ -195,7 +196,36 @@
           }
         }
       },
-      "Microsoft.Data.SqlClient.SNI.runtime/6.0.2": {
+      "Microsoft.Data.SqlClient.Extensions.Abstractions/7.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Data.SqlClient.Internal.Logging": "[7.0.3, 8.0.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Data.SqlClient.Extensions.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Data.SqlClient.Extensions.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Data.SqlClient.Internal.Logging/7.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Data.SqlClient.Internal.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Data.SqlClient.Internal.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Data.SqlClient.SNI.runtime/6.0.3": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll": {
@@ -585,10 +615,10 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Protocols/7.5.0": {
+      "Microsoft.IdentityModel.Protocols/8.16.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "7.5.0"
+          "Microsoft.IdentityModel.Tokens": "8.16.0"
         },
         "compile": {
           "lib/net8.0/Microsoft.IdentityModel.Protocols.dll": {
@@ -601,11 +631,11 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Protocols.OpenIdConnect/7.5.0": {
+      "Microsoft.IdentityModel.Protocols.OpenIdConnect/8.16.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Protocols": "7.5.0",
-          "System.IdentityModel.Tokens.Jwt": "7.5.0"
+          "Microsoft.IdentityModel.Protocols": "8.16.0",
+          "System.IdentityModel.Tokens.Jwt": "8.16.0"
         },
         "compile": {
           "lib/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {
@@ -1050,10 +1080,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Data.SqlClient/6.0.2": {
-      "sha512": "RDqwzNu5slSqGy0eSgnN4fuLdGI1w9ZHBRNALrbUsykOIbXtGCpyotG0r5zz+HHtzxbe6LtcAyWcOiu0a+Fx/A==",
+    "Microsoft.Data.SqlClient/7.0.3": {
+      "sha512": "5DDy4tqsB94bHXRhTnVcIceqAqJr5sW7qsIcZGdrgH2EyjlIzcPVOInc2ThZEQpl33oXuW4r8N/7kZZJtn+YMw==",
       "type": "package",
-      "path": "microsoft.data.sqlclient/6.0.2",
+      "path": "microsoft.data.sqlclient/7.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1104,7 +1134,9 @@
         "lib/net9.0/tr/Microsoft.Data.SqlClient.resources.dll",
         "lib/net9.0/zh-Hans/Microsoft.Data.SqlClient.resources.dll",
         "lib/net9.0/zh-Hant/Microsoft.Data.SqlClient.resources.dll",
-        "microsoft.data.sqlclient.6.0.2.nupkg.sha512",
+        "lib/netstandard2.0/Microsoft.Data.SqlClient.dll",
+        "lib/netstandard2.0/Microsoft.Data.SqlClient.xml",
+        "microsoft.data.sqlclient.7.0.3.nupkg.sha512",
         "microsoft.data.sqlclient.nuspec",
         "ref/net462/Microsoft.Data.SqlClient.dll",
         "ref/net462/Microsoft.Data.SqlClient.xml",
@@ -1112,6 +1144,8 @@
         "ref/net8.0/Microsoft.Data.SqlClient.xml",
         "ref/net9.0/Microsoft.Data.SqlClient.dll",
         "ref/net9.0/Microsoft.Data.SqlClient.xml",
+        "ref/netstandard2.0/Microsoft.Data.SqlClient.dll",
+        "ref/netstandard2.0/Microsoft.Data.SqlClient.xml",
         "runtimes/unix/lib/net8.0/Microsoft.Data.SqlClient.dll",
         "runtimes/unix/lib/net9.0/Microsoft.Data.SqlClient.dll",
         "runtimes/win/lib/net462/Microsoft.Data.SqlClient.dll",
@@ -1119,16 +1153,46 @@
         "runtimes/win/lib/net9.0/Microsoft.Data.SqlClient.dll"
       ]
     },
-    "Microsoft.Data.SqlClient.SNI.runtime/6.0.2": {
-      "sha512": "f+pRODTWX7Y67jXO3T5S2dIPZ9qMJNySjlZT/TKmWVNWe19N8jcWmHaqHnnchaq3gxEKv1SWVY5EFzOD06l41w==",
+    "Microsoft.Data.SqlClient.Extensions.Abstractions/7.0.3": {
+      "sha512": "sP2oeKE82gxIqw3FKJb2BmPv/6Ux6hfVw3BRyn/N+lHHKetv2SXwhvOdolmyg/W168AQDNya+rYkyV3x5TbYGA==",
       "type": "package",
-      "path": "microsoft.data.sqlclient.sni.runtime/6.0.2",
+      "path": "microsoft.data.sqlclient.extensions.abstractions/7.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "dotnet.png",
+        "lib/netstandard2.0/Microsoft.Data.SqlClient.Extensions.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Data.SqlClient.Extensions.Abstractions.xml",
+        "microsoft.data.sqlclient.extensions.abstractions.7.0.3.nupkg.sha512",
+        "microsoft.data.sqlclient.extensions.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Data.SqlClient.Internal.Logging/7.0.3": {
+      "sha512": "uIorWCINpWFfQGvlpd9LqwzHPf8d6IB39wjX/U48oIbiK+V9+r10U2zcXJi5NJptLe5jhVWQo537El4IGV+WbQ==",
+      "type": "package",
+      "path": "microsoft.data.sqlclient.internal.logging/7.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "dotnet.png",
+        "lib/netstandard2.0/Microsoft.Data.SqlClient.Internal.Logging.dll",
+        "lib/netstandard2.0/Microsoft.Data.SqlClient.Internal.Logging.xml",
+        "microsoft.data.sqlclient.internal.logging.7.0.3.nupkg.sha512",
+        "microsoft.data.sqlclient.internal.logging.nuspec"
+      ]
+    },
+    "Microsoft.Data.SqlClient.SNI.runtime/6.0.3": {
+      "sha512": "kt2JDsmcFGzeanCo6hJNalMcjEvgtYoxSQjqh00Nm1xXmahHzuR48TxjS1nq/lpnYh+g+wLqD5D9WSz8xsybhw==",
+      "type": "package",
+      "path": "microsoft.data.sqlclient.sni.runtime/6.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
         "dotnet.png",
-        "microsoft.data.sqlclient.sni.runtime.6.0.2.nupkg.sha512",
+        "microsoft.data.sqlclient.sni.runtime.6.0.3.nupkg.sha512",
         "microsoft.data.sqlclient.sni.runtime.nuspec",
         "runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll",
         "runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll",
@@ -1725,15 +1789,16 @@
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Protocols/7.5.0": {
-      "sha512": "ugyb0Nm+I+UrHGYg28mL8oCV31xZrOEbs8fQkcShUoKvgk22HroD2odCnqEf56CoAFYTwoDExz8deXzrFC+TyA==",
+    "Microsoft.IdentityModel.Protocols/8.16.0": {
+      "sha512": "UFrU7d46UTsPQTa2HIEIpB9H1uJe1BW9FLw5uhEJ2ZuKdur8bcUA/bO5caq5dlBt5gNJeRIB3QQXYNs5fCQCZA==",
       "type": "package",
-      "path": "microsoft.identitymodel.protocols/7.5.0",
+      "path": "microsoft.identitymodel.protocols/8.16.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net461/Microsoft.IdentityModel.Protocols.dll",
-        "lib/net461/Microsoft.IdentityModel.Protocols.xml",
+        "README.md",
+        "lib/net10.0/Microsoft.IdentityModel.Protocols.dll",
+        "lib/net10.0/Microsoft.IdentityModel.Protocols.xml",
         "lib/net462/Microsoft.IdentityModel.Protocols.dll",
         "lib/net462/Microsoft.IdentityModel.Protocols.xml",
         "lib/net472/Microsoft.IdentityModel.Protocols.dll",
@@ -1742,21 +1807,24 @@
         "lib/net6.0/Microsoft.IdentityModel.Protocols.xml",
         "lib/net8.0/Microsoft.IdentityModel.Protocols.dll",
         "lib/net8.0/Microsoft.IdentityModel.Protocols.xml",
+        "lib/net9.0/Microsoft.IdentityModel.Protocols.dll",
+        "lib/net9.0/Microsoft.IdentityModel.Protocols.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.xml",
-        "microsoft.identitymodel.protocols.7.5.0.nupkg.sha512",
+        "microsoft.identitymodel.protocols.8.16.0.nupkg.sha512",
         "microsoft.identitymodel.protocols.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Protocols.OpenIdConnect/7.5.0": {
-      "sha512": "/U3I/8uutTqZr2n/zt0q08bluYklq+5VWP7ZuOGpTUR1ln5bSbrexAzdSGzrhxTxNNbHMCU8Mn2bNQvcmehAxg==",
+    "Microsoft.IdentityModel.Protocols.OpenIdConnect/8.16.0": {
+      "sha512": "h4yVXyJsEBBX5lg2G5ftMsi5JzcNEGAzrNphA6DQ6eOd8P0s+cDCOyPwVTYLePZvJL5unbPvYIvzrbTXzFjXnQ==",
       "type": "package",
-      "path": "microsoft.identitymodel.protocols.openidconnect/7.5.0",
+      "path": "microsoft.identitymodel.protocols.openidconnect/8.16.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net461/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
-        "lib/net461/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
+        "README.md",
+        "lib/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
+        "lib/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
         "lib/net462/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
         "lib/net462/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
         "lib/net472/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
@@ -1765,9 +1833,11 @@
         "lib/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
         "lib/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
         "lib/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
+        "lib/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
+        "lib/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
-        "microsoft.identitymodel.protocols.openidconnect.7.5.0.nupkg.sha512",
+        "microsoft.identitymodel.protocols.openidconnect.8.16.0.nupkg.sha512",
         "microsoft.identitymodel.protocols.openidconnect.nuspec"
       ]
     },
@@ -2285,7 +2355,7 @@
       "Azure.Identity >= 1.21.0",
       "BCrypt.Net-Next >= 4.2.0",
       "Microsoft.AspNetCore.Http.Abstractions >= 2.3.13",
-      "Microsoft.Data.SqlClient >= 6.0.2",
+      "Microsoft.Data.SqlClient >= 7.0.3",
       "Microsoft.EntityFrameworkCore >= 9.0.9",
       "Microsoft.EntityFrameworkCore.Abstractions >= 9.0.9",
       "Microsoft.EntityFrameworkCore.Relational >= 9.0.9",
@@ -2349,7 +2419,7 @@
           },
           "Microsoft.Data.SqlClient": {
             "target": "Package",
-            "version": "[6.0.2, )"
+            "version": "[7.0.3, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -2384,6 +2454,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

@@ -1,4 +1,4 @@
-﻿namespace Products_Crud.Model
+﻿namespace ERP.Modules.Shared.Domain
 {
     public class Employee
     {

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ERP.Modules.Hospitality")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a499a58137963dcc4cc7905b88b05cc7198d6de4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf92e9ca4309229d1ff79f81a46f06b14321e52c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ERP.Modules.Hospitality")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ERP.Modules.Hospitality")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

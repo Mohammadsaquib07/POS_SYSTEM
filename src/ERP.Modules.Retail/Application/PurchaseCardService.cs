@@ -1,8 +1,12 @@
-using Erp.Bl.PurchaseTopCards;
-using Erp.Dtos.PurchaseCardsDtos;
-using Erp.interfaces.PurchaseTabCards;
+using ERP.Modules.Retail.Domain;
+using ERP.Modules.Retail.Application;
+using ERP.Modules.Retail.Contracts;
+using ERP.Modules.Retail.Controllers;
+using ERP.Modules.Retail.DTOs;
+using ERP.Modules.Retail.Infrastructure;
+using ERP.Modules.Retail.Enums;
 
-namespace Erp.Bl.PurchaseCardsDto.Concrete
+namespace ERP.Modules.Retail.Application
 {
     public class PurchaseCardService:IPurchaseCardService
     {

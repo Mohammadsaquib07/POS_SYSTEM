@@ -1,6 +1,6 @@
-﻿using Products_Crud.Model;
+﻿using ERP.Modules.Shared.Domain;
 
-namespace Products_Crud.Common.Contracts
+namespace ERP.Modules.Shared.Contracts
 {
     public interface IEmployeeRepository
     {

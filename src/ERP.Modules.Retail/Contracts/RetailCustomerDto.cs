@@ -1,4 +1,4 @@
-namespace Products_Crud.Modules.Retail.Contracts;
+namespace ERP.Modules.Retail.Contracts;
 
 public sealed record RetailCustomerDto(
     int Id,

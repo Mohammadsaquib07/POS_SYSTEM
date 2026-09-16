@@ -1,4 +1,4 @@
-namespace Products_Crud.Common.Enums
+namespace ERP.Modules.Retail.Enums
 {
     public enum PurchaseInvoiceStatus
     {

@@ -1,4 +1,4 @@
-﻿namespace Products_Crud.DTOs
+﻿namespace ERP.Modules.Shared.DTOs
 {
     public class RegisterRequestDto
     {

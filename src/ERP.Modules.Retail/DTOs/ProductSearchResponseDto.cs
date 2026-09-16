@@ -1,4 +1,4 @@
-namespace Products_Crud.DTOs
+namespace ERP.Modules.Retail.DTOs
 {
     public class ProductSearchResponseDto
     {

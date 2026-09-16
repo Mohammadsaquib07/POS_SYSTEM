@@ -17,7 +17,7 @@
 		<PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
-		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -41,6 +41,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="src\ERP.Modules.Retail\ERP.Modules.Retail.csproj" />
+          <ProjectReference Include="src\ERP.Modules.Shared\ERP.Modules.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

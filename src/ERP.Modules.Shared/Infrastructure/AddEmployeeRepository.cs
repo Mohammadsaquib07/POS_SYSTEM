@@ -1,8 +1,8 @@
 ﻿using Microsoft.Data.SqlClient;
-using Products_Crud.Model;
-using Products_Crud.Common.Contracts;
+using ERP.Modules.Shared.Domain;
+using ERP.Modules.Shared.Contracts;
 using Microsoft.Extensions.Configuration;
-namespace Products_Crud.DAL
+namespace ERP.Modules.Shared.Infrastructure
 {
     public class AddEmployeeRepository:IEmployeeRepository
     {
