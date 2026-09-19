@@ -1,6 +1,4 @@
-using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ERP.Modules.Shared.DTOs;
 using ERP.Modules.Shared.Domain;
 using ERP.Modules.Shared.Application;

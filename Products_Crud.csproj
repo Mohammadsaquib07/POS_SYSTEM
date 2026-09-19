@@ -8,6 +8,17 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
+
+<ItemGroup>
+  <Compile Remove="src\ERP.Modules.Retail\**\*.cs" />
+  <Compile Remove="src\ERP.Modules.Shared\**\*.cs" />
+  <Content Remove="src\ERP.Modules.Retail\**\*" />
+  <Content Remove="src\ERP.Modules.Shared\**\*" />
+  <EmbeddedResource Remove="src\ERP.Modules.Retail\**\*" />
+  <EmbeddedResource Remove="src\ERP.Modules.Shared\**\*" />
+  <None Remove="src\ERP.Modules.Retail\**\*" />
+  <None Remove="src\ERP.Modules.Shared\**\*" />
+</ItemGroup>
 	<ItemGroup>
 		<None Remove="client\src\Types\Employee.ts" />
 	</ItemGroup>

@@ -9,7 +9,7 @@ using ERP.Modules.Retail.Enums;
 
 namespace ERP.Modules.Retail.Application;
 
-internal sealed class RetailCustomerService(IRetailDbContext dbContext) : IRetailCustomerService
+public sealed class RetailCustomerService(IRetailDbContext dbContext) : IRetailCustomerService
 {
     public Task<RetailCustomerDto?> GetCustomerAsync(
         int customerId,

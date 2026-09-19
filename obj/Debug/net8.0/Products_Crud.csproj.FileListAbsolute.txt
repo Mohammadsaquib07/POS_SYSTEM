@@ -7,10 +7,6 @@
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.API/Properties/serviceDependencies.local.json
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Hospitality/obj/ERP.Modules.Hospitality.csproj.nuget.dgspec.json
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Hospitality/obj/project.assets.json
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Retail/obj/ERP.Modules.Retail.csproj.nuget.dgspec.json
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Retail/obj/project.assets.json
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Shared/obj/ERP.Modules.Shared.csproj.nuget.dgspec.json
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Shared/obj/project.assets.json
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/Products_Crud
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/Products_Crud.deps.json
 /home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/Products_Crud.runtimeconfig.json
@@ -196,7 +192,5 @@
 /home/saquib/ERP-PROJECT/dotnetbackend/obj/Debug/net8.0/Products_Crud.pdb
 /home/saquib/ERP-PROJECT/dotnetbackend/obj/Debug/net8.0/Products_Crud.genruntimeconfig.cache
 /home/saquib/ERP-PROJECT/dotnetbackend/obj/Debug/net8.0/ref/Products_Crud.dll
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Retail/bin/Debug/net8.0/ERP.Modules.Retail.deps.json
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Retail/obj/Debug/net8.0/ERP.Modules.Retail.sourcelink.json
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Shared/bin/Debug/net8.0/ERP.Modules.Shared.deps.json
-/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Shared/obj/Debug/net8.0/ERP.Modules.Shared.sourcelink.json
+/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Hospitality/bin/Debug/net8.0/ERP.Modules.Hospitality.deps.json
+/home/saquib/ERP-PROJECT/dotnetbackend/bin/Debug/net8.0/src/ERP.Modules.Hospitality/obj/Debug/net8.0/ERP.Modules.Hospitality.sourcelink.json
